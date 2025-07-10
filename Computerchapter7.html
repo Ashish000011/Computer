@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Hardware & Software Fundamentals</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0d9488 0%, #7c3aed 100%);
+        }
+        /* Animation for Bus Diagram */
+        .bus-line {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        .bus-label {
+             transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter7">Chapter 7</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hardware" class="text-gray-300 hover:text-white transition-colors" data-key="nav_hardware">Hardware</a>
+                    <a href="#software" class="text-gray-300 hover:text-white transition-colors" data-key="nav_software">Software</a>
+                </div>
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">Hardware & Software</h1>
+            <p class="mt-4 text-lg md:text-xl text-teal-200 max-w-3xl mx-auto" data-key="hero_subtitle">The fundamental building blocks of any computer system: the physical components you can touch and the digital instructions that bring them to life.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Hardware -->
+        <section id="hardware" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="hardware_title">Part 1: Hardware</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="hardware_subtitle">The physical, tangible components of a computer system, from the main case to the smallest port.</p>
+            
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-8">
+                <h3 class="font-bold text-2xl text-white mb-4" data-key="sysunit_title">The System Unit</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div><h4 class="font-semibold text-teal-400" data-key="ups_title">UPS</h4><p class="text-sm text-gray-400" data-key="ups_desc">An Uninterruptible Power Supply provides backup battery power during outages.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="smps_title">SMPS</h4><p class="text-sm text-gray-400" data-key="smps_desc">A Switched-Mode Power Supply converts AC wall power to the DC power used by computer components.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="mobo_title">Motherboard</h4><p class="text-sm text-gray-400" data-key="mobo_desc">The main circuit board (PCB) that connects all components, allowing them to communicate.</p></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-8">
+                <h3 class="font-bold text-2xl text-white mb-4" data-key="ports_title">Computer Ports</h3>
+                <p class="text-gray-400 mb-6" data-key="ports_desc">Connecting sockets on the system unit for plugging in peripheral devices.</p>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div><h4 class="font-semibold text-teal-400" data-key="serial_title">Serial Port</h4><p class="text-sm text-gray-400" data-key="serial_desc">Older port (RS-232) that transmits data 1 bit at a time.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="parallel_title">Parallel Port</h4><p class="text-sm text-gray-400" data-key="parallel_desc">Faster than serial, transmits 8 bits at once. Used for printers.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="usb_title">USB</h4><p class="text-sm text-gray-400" data-key="usb_desc">Universal Serial Bus, the modern standard for connecting up to 127 devices.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="firewire_title">FireWire</h4><p class="text-sm text-gray-400" data-key="firewire_desc">High-speed port (IEEE 1394) for large data transfers, like video.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="vga_title">VGA Port</h4><p class="text-sm text-gray-400" data-key="vga_desc">An older, 15-pin analog port for connecting monitors.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="hdmi_dvi_title">HDMI & DVI</h4><p class="text-sm text-gray-400" data-key="hdmi_dvi_desc">Modern digital ports for display devices. HDMI carries both video and audio.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="sata_pata_title">SATA & PATA</h4><p class="text-sm text-gray-400" data-key="sata_pata_desc">Interfaces for connecting internal storage drives like HDDs and SSDs.</p></div>
+                    <div><h4 class="font-semibold text-teal-400" data-key="other_ports_title">Other Ports</h4><p class="text-sm text-gray-400" data-key="other_ports_desc">Includes Game Port for joysticks, Bluetooth for wireless, and MIDI for musical instruments.</p></div>
+                </div>
+            </div>
+
+            <!-- Bus Animation Section -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="font-bold text-2xl text-white mb-2 text-center" data-key="bus_title">The Computer Bus</h3>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto" data-key="bus_subtitle">A bus is a set of wires that acts as a data highway between computer components. This animation shows the three main types of system buses.</p>
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="relative h-64 w-full flex justify-between items-center p-4">
+                        <!-- CPU and Memory Blocks -->
+                        <div class="w-32 h-32 bg-indigo-600 rounded-lg flex items-center justify-center font-bold z-10" data-key="cpu">CPU</div>
+                        <div class="w-32 h-32 bg-purple-600 rounded-lg flex items-center justify-center font-bold z-10" data-key="memory">Memory</div>
+                        <!-- SVG for Bus Lines -->
+                        <svg class="absolute top-0 left-0 w-full h-full">
+                            <defs>
+                                <marker id="arrow-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fde047" /></marker>
+                                <marker id="arrow-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa" /></marker>
+                                <marker id="arrow-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f472b6" /></marker>
+                            </defs>
+                            <!-- Address Bus -->
+                            <path id="address-bus" d="M 130 60 Q 50% 20, 80% 60" stroke="#fde047" stroke-width="4" fill="none" class="bus-line" marker-end="url(#arrow-yellow)"/>
+                            <!-- Data Bus -->
+                            <path id="data-bus" d="M 130 128 L 80% 128" stroke="#a78bfa" stroke-width="4" fill="none" class="bus-line" marker-end="url(#arrow-violet)" marker-start="url(#arrow-violet)"/>
+                            <!-- Control Bus -->
+                            <path id="control-bus" d="M 130 196 Q 50% 236, 80% 196" stroke="#f472b6" stroke-width="4" fill="none" class="bus-line" marker-end="url(#arrow-pink)"/>
+                        </svg>
+                    </div>
+                    <div class="text-gray-400 space-y-4">
+                        <div id="address-label" class="bus-label opacity-20"><strong class="text-yellow-300" data-key="address_bus_title">Address Bus:</strong> <span data-key="address_bus_desc">Carries memory addresses from the CPU to memory. It is unidirectional (one-way).</span></div>
+                        <div id="data-label" class="bus-label opacity-20"><strong class="text-violet-400" data-key="data_bus_title">Data Bus:</strong> <span data-key="data_bus_desc">Carries the actual data back and forth between the CPU and memory. It is bidirectional.</span></div>
+                        <div id="control-label" class="bus-label opacity-20"><strong class="text-pink-400" data-key="control_bus_title">Control Bus:</strong> <span data-key="control_bus_desc">Carries command and control signals from the CPU to manage all activities.</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Software -->
+        <section id="software" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="software_title">Part 2: Software</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="software_subtitle">The set of instructions and programs that tell the hardware what to do. Software is intangible.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- System Software -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="system_sw_title">System Software</h3>
+                    <p class="text-gray-400 mb-4" data-key="system_sw_desc">Core software that manages the hardware and provides a platform for applications.</p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li data-key="os_desc"><b>Operating System (OS):</b> The main system software (e.g., Windows, macOS).</li>
+                        <li data-key="lp_desc"><b>Language Processor:</b> Converts code into machine language (Compilers, Interpreters).</li>
+                        <li data-key="util_desc"><b>Utility Software:</b> Helps maintain the computer (e.g., Antivirus, Disk Cleanup).</li>
+                    </ul>
+                </div>
+                <!-- Application Software -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="app_sw_title">Application Software</h3>
+                    <p class="text-gray-400 mb-4" data-key="app_sw_desc">Programs designed for end-users to perform specific tasks.</p>
+                     <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li data-key="gen_pur_desc"><b>General Purpose:</b> Word processors, web browsers, spreadsheets.</li>
+                        <li data-key="spec_pur_desc"><b>Specific Purpose:</b> Accounting software, reservation systems.</li>
+                        <li data-key="free_desc"><b>Freeware:</b> Software available at no cost.</li>
+                        <li data-key="share_desc"><b>Shareware:</b> Try-before-you-buy software.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <script>
+        const translations = {
+            en: {
+                nav_chapter7: "Chapter 7",
+                nav_hardware: "Hardware",
+                nav_software: "Software",
+                hero_title: "Hardware & Software",
+                hero_subtitle: "The fundamental building blocks of any computer system: the physical components you can touch and the digital instructions that bring them to life.",
+                hardware_title: "Part 1: Hardware",
+                hardware_subtitle: "The physical, tangible components of a computer system, from the main case to the smallest port.",
+                sysunit_title: "The System Unit",
+                ups_title: "UPS",
+                ups_desc: "An Uninterruptible Power Supply provides backup battery power during outages.",
+                smps_title: "SMPS",
+                smps_desc: "A Switched-Mode Power Supply converts AC wall power to the DC power used by computer components.",
+                mobo_title: "Motherboard",
+                mobo_desc: "The main circuit board (PCB) that connects all components, allowing them to communicate.",
+                ports_title: "Computer Ports",
+                ports_desc: "Connecting sockets on the system unit for plugging in peripheral devices.",
+                serial_title: "Serial Port",
+                serial_desc: "Older port (RS-232) that transmits data 1 bit at a time.",
+                parallel_title: "Parallel Port",
+                parallel_desc: "Faster than serial, transmits 8 bits at once. Used for printers.",
+                usb_title: "USB",
+                usb_desc: "Universal Serial Bus, the modern standard for connecting up to 127 devices.",
+                firewire_title: "FireWire",
+                firewire_desc: "High-speed port (IEEE 1394) for large data transfers, like video.",
+                vga_title: "VGA Port",
+                vga_desc: "An older, 15-pin analog port for connecting monitors.",
+                hdmi_dvi_title: "HDMI & DVI",
+                hdmi_dvi_desc: "Modern digital ports for display devices. HDMI carries both video and audio.",
+                sata_pata_title: "SATA & PATA",
+                sata_pata_desc: "Interfaces for connecting internal storage drives like HDDs and SSDs.",
+                other_ports_title: "Other Ports",
+                other_ports_desc: "Includes Game Port for joysticks, Bluetooth for wireless, and MIDI for musical instruments.",
+                bus_title: "The Computer Bus",
+                bus_subtitle: "A bus is a set of wires that acts as a data highway between computer components. This animation shows the three main types of system buses.",
+                cpu: "CPU",
+                memory: "Memory",
+                address_bus_title: "Address Bus:",
+                address_bus_desc: "Carries memory addresses from the CPU to memory. It is unidirectional (one-way).",
+                data_bus_title: "Data Bus:",
+                data_bus_desc: "Carries the actual data back and forth between the CPU and memory. It is bidirectional.",
+                control_bus_title: "Control Bus:",
+                control_bus_desc: "Carries command and control signals from the CPU to manage all activities.",
+                software_title: "Part 2: Software",
+                software_subtitle: "The set of instructions and programs that tell the hardware what to do. Software is intangible.",
+                system_sw_title: "System Software",
+                system_sw_desc: "Core software that manages the hardware and provides a platform for applications.",
+                os_desc: "<b>Operating System (OS):</b> The main system software (e.g., Windows, macOS).",
+                lp_desc: "<b>Language Processor:</b> Converts code into machine language (Compilers, Interpreters).",
+                util_desc: "<b>Utility Software:</b> Helps maintain the computer (e.g., Antivirus, Disk Cleanup).",
+                app_sw_title: "Application Software",
+                app_sw_desc: "Programs designed for end-users to perform specific tasks.",
+                gen_pur_desc: "<b>General Purpose:</b> Word processors, web browsers, spreadsheets.",
+                spec_pur_desc: "<b>Specific Purpose:</b> Accounting software, reservation systems.",
+                free_desc: "<b>Freeware:</b> Software available at no cost.",
+                share_desc: "<b>Shareware:</b> Try-before-you-buy software.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter7: "अध्याय 7",
+                nav_hardware: "हार्डवेयर",
+                nav_software: "सॉफ्टवेयर",
+                hero_title: "हार्डवेयर और सॉफ्टवेयर",
+                hero_subtitle: "किसी भी कंप्यूटर सिस्टम के मूलभूत बिल्डिंग ब्लॉक्स: भौतिक घटक जिन्हें आप छू सकते हैं और डिजिटल निर्देश जो उन्हें जीवंत करते हैं।",
+                hardware_title: "भाग 1: हार्डवेयर",
+                hardware_subtitle: "एक कंप्यूटर सिस्टम के भौतिक, मूर्त घटक, मुख्य केस से लेकर सबसे छोटे पोर्ट तक।",
+                sysunit_title: "सिस्टम यूनिट",
+                ups_title: "यूपीएस",
+                ups_desc: "एक अनइंटरप्टिबल पावर सप्लाई बिजली कटौती के दौरान बैकअप बैटरी पावर प्रदान करता है।",
+                smps_title: "एसएमपीएस",
+                smps_desc: "एक स्विच्ड-मोड पावर सप्लाई एसी वॉल पावर को डीसी पावर में परिवर्तित करता है जिसका उपयोग कंप्यूटर घटक करते हैं।",
+                mobo_title: "मदरबोर्ड",
+                mobo_desc: "मुख्य सर्किट बोर्ड (पीसीबी) जो सभी घटकों को जोड़ता है, जिससे वे संवाद कर सकते हैं।",
+                ports_title: "कंप्यूटर पोर्ट्स",
+                ports_desc: "पेरिफेरल उपकरणों को प्लग करने के लिए सिस्टम यूनिट पर कनेक्टिंग सॉकेट।",
+                serial_title: "सीरियल पोर्ट",
+                serial_desc: "पुराना पोर्ट (RS-232) जो एक बार में 1 बिट डेटा प्रसारित करता है।",
+                parallel_title: "पैरेलल पोर्ट",
+                parallel_desc: "सीरियल से तेज़, एक बार में 8 बिट प्रसारित करता है। प्रिंटर के लिए उपयोग किया जाता है।",
+                usb_title: "यूएसबी",
+                usb_desc: "यूनिवर्सल सीरियल बस, 127 उपकरणों तक को जोड़ने के लिए आधुनिक मानक।",
+                firewire_title: "फायरवायर",
+                firewire_desc: "बड़े डेटा ट्रांसफर, जैसे वीडियो के लिए हाई-स्पीड पोर्ट (IEEE 1394)।",
+                vga_title: "वीजीए पोर्ट",
+                vga_desc: "मॉनिटर कनेक्ट करने के लिए एक पुराना, 15-पिन एनालॉग पोर्ट।",
+                hdmi_dvi_title: "एचडीएमआई और डीवीआई",
+                hdmi_dvi_desc: "डिस्प्ले उपकरणों के लिए आधुनिक डिजिटल पोर्ट। एचडीएमआई वीडियो और ऑडियो दोनों को वहन करता है।",
+                sata_pata_title: "साटा और पाटा",
+                sata_pata_desc: "एचडीडी और एसएसडी जैसे आंतरिक स्टोरेज ड्राइव को जोड़ने के लिए इंटरफेस।",
+                other_ports_title: "अन्य पोर्ट्स",
+                other_ports_desc: "इसमें जॉयस्टिक के लिए गेम पोर्ट, वायरलेस के लिए ब्लूटूथ और संगीत वाद्ययंत्रों के लिए मिडी शामिल हैं।",
+                bus_title: "कंप्यूटर बस",
+                bus_subtitle: "एक बस तारों का एक सेट है जो कंप्यूटर घटकों के बीच डेटा हाईवे के रूप में कार्य करता है। यह एनीमेशन तीन मुख्य प्रकार की सिस्टम बसों को दिखाता है।",
+                cpu: "सीपीयू",
+                memory: "मेमोरी",
+                address_bus_title: "एड्रेस बस:",
+                address_bus_desc: "सीपीयू से मेमोरी तक मेमोरी एड्रेस ले जाती है। यह यूनिडायरेक्शनल (एक-तरफ़ा) है।",
+                data_bus_title: "डेटा बस:",
+                data_bus_desc: "सीपीयू और मेमोरी के बीच वास्तविक डेटा को आगे और पीछे ले जाती है। यह द्विदिश है।",
+                control_bus_title: "कंट्रोल बस:",
+                control_bus_desc: "सभी गतिविधियों का प्रबंधन करने के लिए सीपीयू से कमांड और कंट्रोल सिग्नल ले जाती है।",
+                software_title: "भाग 2: सॉफ्टवेयर",
+                software_subtitle: "निर्देशों और प्रोग्रामों का सेट जो हार्डवेयर को बताता है कि क्या करना है। सॉफ्टवेयर अमूर्त है।",
+                system_sw_title: "सिस्टम सॉफ्टवेयर",
+                system_sw_desc: "कोर सॉफ्टवेयर जो हार्डवेयर का प्रबंधन करता है और अनुप्रयोगों के लिए एक मंच प्रदान करता है।",
+                os_desc: "<b>ऑपरेटिंग सिस्टम (OS):</b> मुख्य सिस्टम सॉफ्टवेयर (जैसे, विंडोज, मैकओएस)।",
+                lp_desc: "<b>भाषा प्रोसेसर:</b> कोड को मशीन भाषा में परिवर्तित करता है (संकलक, दुभाषिए)।",
+                util_desc: "<b>यूटिलिटी सॉफ्टवेयर:</b> कंप्यूटर को बनाए रखने में मदद करता है (जैसे, एंटीवायरस, डिस्क क्लीनअप)।",
+                app_sw_title: "एप्लीकेशन सॉफ्टवेयर",
+                app_sw_desc: "अंतिम-उपयोगकर्ताओं के लिए विशिष्ट कार्यों को करने के लिए डिज़ाइन किए गए प्रोग्राम।",
+                gen_pur_desc: "<b>सामान्य उद्देश्य:</b> वर्ड प्रोसेसर, वेब ब्राउज़र, स्प्रेडशीट।",
+                spec_pur_desc: "<b>विशिष्ट उद्देश्य:</b> लेखांकन सॉफ्टवेयर, आरक्षण प्रणाली।",
+                free_desc: "<b>फ्रीवेयर:</b> बिना किसी लागत के उपलब्ध सॉफ्टवेयर।",
+                share_desc: "<b>शेयरवेयर:</b> ट्राई-बिफोर-यू-बाय सॉफ्टवेयर।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Bus Animation Logic
+        const addressBus = document.getElementById('address-bus');
+        const dataBus = document.getElementById('data-bus');
+        const controlBus = document.getElementById('control-bus');
+        const addressLabel = document.getElementById('address-label');
+        const dataLabel = document.getElementById('data-label');
+        const controlLabel = document.getElementById('control-label');
+
+        async function runBusAnimation() {
+            // Ensure elements exist before proceeding
+            if (!addressBus || !dataBus || !controlBus || !addressLabel || !dataLabel || !controlLabel) {
+                console.error("One or more animation elements are missing.");
+                return;
+            }
+            while (true) {
+                // Step 1: Address Bus
+                addressLabel.style.opacity = 1;
+                addressBus.style.strokeDashoffset = 0;
+                await new Promise(r => setTimeout(r, 2000));
+                
+                // Step 2: Data Bus
+                dataLabel.style.opacity = 1;
+                dataBus.style.strokeDashoffset = 0;
+                await new Promise(r => setTimeout(r, 2000));
+
+                // Step 3: Control Bus
+                controlLabel.style.opacity = 1;
+                controlBus.style.strokeDashoffset = 0;
+                await new Promise(r => setTimeout(r, 2000));
+
+                // Reset for next loop
+                addressBus.style.strokeDashoffset = 300;
+                dataBus.style.strokeDashoffset = 300;
+                controlBus.style.strokeDashoffset = 300;
+                addressLabel.style.opacity = 0.2;
+                dataLabel.style.opacity = 0.2;
+                controlLabel.style.opacity = 0.2;
+                await new Promise(r => setTimeout(r, 1000));
+            }
+        }
+
+        // Set initial language and start animation
+        document.addEventListener('DOMContentLoaded', () => {
+             setLanguage('en');
+             runBusAnimation();
+        });
+       
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

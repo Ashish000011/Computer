@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Computer Networks & Data Communication</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter and Noto Sans Devanagari -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .lang-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #047857 0%, #a21caf 100%);
+        }
+        /* Hide Hindi content by default */
+        .lang-hi {
+            display: none;
+        }
+        /* Custom list styling for better readability */
+        ul, ol {
+            list-style-position: outside;
+            padding-left: 1.5rem;
+        }
+        li {
+            padding-left: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        h2 {
+           border-bottom: 1px solid #374151; /* border-gray-700 */
+           padding-bottom: 0.75rem;
+        }
+        h3 {
+            color: #6ee7b7; /* text-emerald-300 */
+        }
+        h4 {
+            color: #c4b5fd; /* text-violet-300 */
+        }
+        code {
+            background-color: #374151; /* bg-gray-700 */
+            color: #fde047; /* yellow-300 */
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .card {
+            background-color: #1f2937; /* bg-gray-800 */
+            border: 1px solid #374151; /* border-gray-700 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white">
+                    <span class="lang-en">Chapter 10</span>
+                    <span class="lang-hi">अध्याय 10</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#networks" class="text-gray-300 hover:text-white transition-colors"><span class="lang-en">Networks</span><span class="lang-hi">नेटवर्क</span></a>
+                    <a href="#topologies" class="text-gray-300 hover:text-white transition-colors"><span class="lang-en">Topologies</span><span class="lang-hi">टोपोलॉजी</span></a>
+                    <a href="#devices" class="text-gray-300 hover:text-white transition-colors"><span class="lang-en">Devices</span><span class="lang-hi">उपकरण</span></a>
+                    <a href="#communication" class="text-gray-300 hover:text-white transition-colors"><span class="lang-en">Communication</span><span class="lang-hi">संचार</span></a>
+                </div>
+                <button id="lang-toggle-btn" class="bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-700 transition-colors">
+                    हिन्दी
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                <span class="lang-en">Computer Networks & Data Communication</span>
+                <span class="lang-hi">कंप्यूटर नेटवर्क और डेटा संचार</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-emerald-200 max-w-3xl mx-auto">
+                <span class="lang-en">Exploring how computers connect, share resources, and communicate across the globe.</span>
+                <span class="lang-hi">यह जानना कि कंप्यूटर कैसे जुड़ते हैं, संसाधन साझा करते हैं और दुनिया भर में संचार करते हैं।</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Network Fundamentals -->
+        <section id="networks" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-white">
+                <span class="lang-en">1. Network Fundamentals</span>
+                <span class="lang-hi">1. नेटवर्क के मूल सिद्धांत</span>
+            </h2>
+            <div class="card space-y-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">What is a Network?</span><span class="lang-hi">नेटवर्क क्या है?</span></h3>
+                    <div class="lang-en"><p>A network is a group of two or more similar things or people interconnected with each other. In computing, a <strong>computer network</strong> is an interconnection among two or more computers or computing devices. This interconnection allows them to share data and resources.</p></div>
+                    <div class="lang-hi"><p>नेटवर्क दो या दो से अधिक समान चीजों या एक दूसरे से जुड़े लोगों का समूह है। कंप्यूटिंग में, एक <strong>कंप्यूटर नेटवर्क</strong> दो या दो से अधिक कंप्यूटरों या कंप्यूटिंग उपकरणों के बीच एक अंतर्संबंध है। यह अंतर्संबंध उन्हें डेटा और संसाधन साझा करने की अनुमति देता है।</p></div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">Evolution of Networks</span><span class="lang-hi">नेटवर्क का विकास</span></h3>
+                    <ul class="space-y-3">
+                        <li><span class="lang-en"><strong>1836:</strong> Telegraph by Cooke and Wheatstone.</span><span class="lang-hi"><strong>1836:</strong> कुक और व्हीटस्टोन द्वारा टेलीग्राफ।</span></li>
+                        <li><span class="lang-en"><strong>1876:</strong> Telephone by Alexander Graham Bell.</span><span class="lang-hi"><strong>1876:</strong> अलेक्जेंडर ग्राहम बेल द्वारा टेलीफोन।</span></li>
+                        <li><span class="lang-en"><strong>1969:</strong> The world's first packet-switching network, <strong>ARPANET</strong> (Advanced Research Project Agency Network), was created by the US Department of Defense (DOD).</span><span class="lang-hi"><strong>1969:</strong> दुनिया का पहला पैकेट-स्विचिंग नेटवर्क, <strong>ARPANET</strong> (एडवांस्ड रिसर्च प्रोजेक्ट एजेंसी नेटवर्क), अमेरिकी रक्षा विभाग (DOD) द्वारा बनाया गया था।</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">Types of Networks (by Geographical Area)</span><span class="lang-hi">नेटवर्क के प्रकार (भौगोलिक क्षेत्र के अनुसार)</span></h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="p-4 bg-gray-900 rounded-lg"><h4 class="font-semibold text-xl mb-2"><span class="lang-en">PAN (Personal Area Network)</span><span class="lang-hi">पैन (पर्सनल एरिया नेटवर्क)</span></h4><div class="lang-en"><p>A small network for connecting personal devices like phones and laptops. Range is typically up to <strong>10 meters</strong>.</p></div><div class="lang-hi"><p>फोन और लैपटॉप जैसे व्यक्तिगत उपकरणों को जोड़ने के लिए एक छोटा नेटवर्क। रेंज आमतौर पर <strong>10 मीटर</strong> तक होती है।</p></div></div>
+                        <div class="p-4 bg-gray-900 rounded-lg"><h4 class="font-semibold text-xl mb-2"><span class="lang-en">LAN (Local Area Network)</span><span class="lang-hi">लैन (लोकल एरिया नेटवर्क)</span></h4><div class="lang-en"><p>Connects devices in a limited area like a room, office, or school (up to 1 km). Speed can be 10 Mbps to 1000 Mbps.</p></div><div class="lang-hi"><p>एक कमरे, कार्यालय या स्कूल (1 किमी तक) जैसे सीमित क्षेत्र में उपकरणों को जोड़ता है। गति 10 एमबीपीएस से 1000 एमबीपीएस हो सकती है।</p></div></div>
+                        <div class="p-4 bg-gray-900 rounded-lg"><h4 class="font-semibold text-xl mb-2"><span class="lang-en">MAN (Metropolitan Area Network)</span><span class="lang-hi">मैन (मेट्रोपॉलिटन एरिया नेटवर्क)</span></h4><div class="lang-en"><p>An extended form of LAN covering a larger area like a city (30-40 km). Example: City Cable Network.</p></div><div class="lang-hi"><p>लैन का एक विस्तारित रूप जो एक शहर (30-40 किमी) जैसे बड़े क्षेत्र को कवर करता है। उदाहरण: सिटी केबल नेटवर्क।</p></div></div>
+                        <div class="p-4 bg-gray-900 rounded-lg"><h4 class="font-semibold text-xl mb-2"><span class="lang-en">WAN (Wide Area Network)</span><span class="lang-hi">वैन (वाइड एरिया नेटवर्क)</span></h4><div class="lang-en"><p>Connects computers, LANs, and MANs across different countries or continents. The <strong>Internet</strong> is the largest example of a WAN.</p></div><div class="lang-hi"><p>विभिन्न देशों या महाद्वीपों में कंप्यूटर, लैन और मैन को जोड़ता है। <strong>इंटरनेट</strong> वैन का सबसे बड़ा उदाहरण है।</p></div></div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Network Topologies -->
+        <section id="topologies" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-white">
+                <span class="lang-en">2. Network Topologies</span>
+                <span class="lang-hi">2. नेटवर्क टोपोलॉजी</span>
+            </h2>
+            <div class="card space-y-8">
+                <div>
+                    <div class="lang-en"><p><strong>Network Topology</strong> refers to the way in which nodes (computers, printers, etc.) are physically or logically arranged and connected to each other.</p></div>
+                    <div class="lang-hi"><p><strong>नेटवर्क टोपोलॉजी</strong> उस तरीके को संदर्भित करती है जिसमें नोड्स (कंप्यूटर, प्रिंटर, आदि) भौतिक या तार्किक रूप से व्यवस्थित और एक दूसरे से जुड़े होते हैं।</p></div>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Star Topology</span><span class="lang-hi">स्टार टोपोलॉजी</span></h4><div class="lang-en"><p>All nodes are connected to a central host node (like a hub or switch). For 'n' nodes, <code>n-1</code> lines are required.</p></div><div class="lang-hi"><p>सभी नोड एक केंद्रीय होस्ट नोड (जैसे हब या स्विच) से जुड़े होते हैं। 'n' नोड्स के लिए, <code>n-1</code> लाइनों की आवश्यकता होती है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Ring Topology</span><span class="lang-hi">रिंग टोपोलॉजी</span></h4><div class="lang-en"><p>Each node is connected to exactly two other nodes, forming a circular path. The link is unidirectional. If one computer fails, the entire network can be disrupted.</p></div><div class="lang-hi"><p>प्रत्येक नोड ठीक दो अन्य नोड्स से जुड़ा होता है, जो एक गोलाकार पथ बनाता है। लिंक एकदिशीय होता है। यदि एक कंप्यूटर विफल हो जाता है, तो पूरा नेटवर्क बाधित हो सकता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Bus Topology</span><span class="lang-hi">बस टोपोलॉजी</span></h4><div class="lang-en"><p>All nodes share a single communication line (the "bus"). A device first checks if the line is free before broadcasting a message.</p></div><div class="lang-hi"><p>सभी नोड एक ही संचार लाइन ("बस") साझा करते हैं। एक उपकरण संदेश प्रसारित करने से पहले जांचता है कि लाइन खाली है या नहीं।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Mesh Topology</span><span class="lang-hi">मेश टोपोलॉजी</span></h4><div class="lang-en"><p>Each node is connected to every other node with a dedicated point-to-point link. For 'n' nodes, <code>n(n-1)/2</code> links are required. Highly reliable.</p></div><div class="lang-hi"><p>प्रत्येक नोड एक समर्पित पॉइंट-टू-पॉइंट लिंक के साथ हर दूसरे नोड से जुड़ा होता है। 'n' नोड्स के लिए, <code>n(n-1)/2</code> लिंक की आवश्यकता होती है। अत्यधिक विश्वसनीय।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Hybrid Topology</span><span class="lang-hi">हाइब्रिड टोपोलॉजी</span></h4><div class="lang-en"><p>A combination of two or more different topologies (e.g., connecting a star network to a ring network).</p></div><div class="lang-hi"><p>दो या दो से अधिक विभिन्न टोपोलॉजी का संयोजन (जैसे, एक स्टार नेटवर्क को एक रिंग नेटवर्क से जोड़ना)।</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Network Devices -->
+        <section id="devices" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-white">
+                <span class="lang-en">3. Network Devices</span>
+                <span class="lang-hi">3. नेटवर्क उपकरण</span>
+            </h2>
+            <div class="card space-y-8">
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Modem</span><span class="lang-hi">मॉडेम</span></h4><div class="lang-en"><p>Stands for <strong>Modulator-Demodulator</strong>. Converts analog signals (from a phone line) to digital bits (for a computer) and vice versa.</p></div><div class="lang-hi"><p><strong>मॉड्यूलेटर-डीमॉड्यूलेटर</strong> का संक्षिप्त रूप। एनालॉग सिग्नल (फोन लाइन से) को डिजिटल बिट्स (कंप्यूटर के लिए) में और इसके विपरीत परिवर्तित करता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Hub</span><span class="lang-hi">हब</span></h4><div class="lang-en"><p>A simple device that connects multiple devices in a LAN. It broadcasts any incoming data to all connected devices, which can cause collisions.</p></div><div class="lang-hi"><p>एक सरल उपकरण जो एक लैन में कई उपकरणों को जोड़ता है। यह किसी भी आने वाले डेटा को सभी जुड़े उपकरणों पर प्रसारित करता है, जिससे टकराव हो सकता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Switch</span><span class="lang-hi">स्विच</span></h4><div class="lang-en"><p>An intelligent device that connects devices in a LAN. It sends data only to the intended destination device, reducing collisions and improving efficiency.</p></div><div class="lang-hi"><p>एक बुद्धिमान उपकरण जो एक लैन में उपकरणों को जोड़ता है। यह डेटा केवल इच्छित गंतव्य डिवाइस पर भेजता है, जिससे टकराव कम होता है और दक्षता में सुधार होता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Router</span><span class="lang-hi">राउटर</span></h4><div class="lang-en"><p>A device that connects different networks together and forwards data packets between them. It determines the best path for data to travel.</p></div><div class="lang-hi"><p>एक उपकरण जो विभिन्न नेटवर्कों को एक साथ जोड़ता है और उनके बीच डेटा पैकेट अग्रेषित करता है। यह डेटा यात्रा के लिए सबसे अच्छा मार्ग निर्धारित करता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Repeater</span><span class="lang-hi">रिपीटर</span></h4><div class="lang-en"><p>An analog device used to regenerate and amplify weak signals to extend the distance over which data can travel.</p></div><div class="lang-hi"><p>एक एनालॉग उपकरण जिसका उपयोग कमजोर संकेतों को पुन: उत्पन्न करने और बढ़ाने के लिए किया जाता है ताकि उस दूरी को बढ़ाया जा सके जिस पर डेटा यात्रा कर सकता है।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Gateway</span><span class="lang-hi">गेटवे</span></h4><div class="lang-en"><p>Acts as an entry/exit point for a network. It connects networks that use different protocols, acting as a "protocol converter".</p></div><div class="lang-hi"><p>एक नेटवर्क के लिए प्रवेश/निकास बिंदु के रूप में कार्य करता है। यह उन नेटवर्कों को जोड़ता है जो विभिन्न प्रोटोकॉल का उपयोग करते हैं, "प्रोटोकॉल कनवर्टर" के रूप में कार्य करते हैं।</p></div></div>
+                    <div><h4 class="font-semibold text-xl mb-2"><span class="lang-en">Bridge</span><span class="lang-hi">ब्रिज</span></h4><div class="lang-en"><p>A device that connects two separate LANs to form a larger LAN, controlling data traffic between them.</p></div><div class="lang-hi"><p>एक उपकरण जो एक बड़ा लैन बनाने के लिए दो अलग-अलग लैन को जोड़ता है, उनके बीच डेटा यातायात को नियंत्रित करता है।</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Data Communication -->
+        <section id="communication" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-white">
+                <span class="lang-en">4. Data Communication</span>
+                <span class="lang-hi">4. डेटा संचार</span>
+            </h2>
+            <div class="card space-y-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">Transmission Modes</span><span class="lang-hi">ट्रांसमिशन मोड</span></h3>
+                    <ul class="space-y-3">
+                        <li><span class="lang-en"><strong>Simplex:</strong> Data flows in one direction only (e.g., Keyboard to Computer, TV broadcast).</span><span class="lang-hi"><strong>सिंप्लेक्स:</strong> डेटा केवल एक दिशा में बहता है (जैसे, कीबोर्ड से कंप्यूटर, टीवी प्रसारण)।</span></li>
+                        <li><span class="lang-en"><strong>Half-Duplex:</strong> Data flows in both directions, but only one direction at a time (e.g., Walkie-Talkie).</span><span class="lang-hi"><strong>हाफ-डुप्लेक्स:</strong> डेटा दोनों दिशाओं में बहता है, लेकिन एक समय में केवल एक ही दिशा में (जैसे, वॉकी-टॉकी)।</span></li>
+                        <li><span class="lang-en"><strong>Full-Duplex:</strong> Data flows in both directions simultaneously (e.g., Telephone call, Internet).</span><span class="lang-hi"><strong>फुल-डुप्लेक्स:</strong> डेटा एक साथ दोनों दिशाओं में बहता है (जैसे, टेलीफोन कॉल, इंटरनेट)।</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">Transmission Media (Wired)</span><span class="lang-hi">ट्रांसमिशन मीडिया (वायर्ड)</span></h3>
+                    <ul class="space-y-3">
+                        <li><span class="lang-en"><strong>Twisted Pair Cable:</strong> Two insulated copper wires twisted together. Can be Shielded (STP) or Unshielded (UTP).</span><span class="lang-hi"><strong>ट्विस्टेड पेयर केबल:</strong> दो इंसुलेटेड तांबे के तार एक साथ मुड़े हुए। शील्डेड (STP) या अनशील्डेड (UTP) हो सकते हैं।</span></li>
+                        <li><span class="lang-en"><strong>Coaxial Cable:</strong> Better shielded and has more bandwidth than twisted pair. Used for cable TV.</span><span class="lang-hi"><strong>कोएक्सियल केबल:</strong> बेहतर परिरक्षित और ट्विस्टेड जोड़ी की तुलना में अधिक बैंडविड्थ है। केबल टीवी के लिए उपयोग किया जाता है।</span></li>
+                        <li><span class="lang-en"><strong>Optical Fiber:</strong> Carries data as light pulses through thin glass fibers. Very high bandwidth and expensive. Works on the principle of Total Internal Reflection (TIR).</span><span class="lang-hi"><strong>ऑप्टिकल फाइबर:</strong> पतले कांच के रेशों के माध्यम से प्रकाश स्पंदों के रूप में डेटा ले जाता है। बहुत उच्च बैंडविड्थ और महंगा। कुल आंतरिक परावर्तन (TIR) के सिद्धांत पर काम करता है।</span></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-2xl font-bold mb-4"><span class="lang-en">Switching Techniques</span><span class="lang-hi">स्विचिंग तकनीकें</span></h3>
+                    <ul class="space-y-3">
+                        <li><span class="lang-en"><strong>Circuit Switching:</strong> A dedicated physical path is established between sender and receiver for the duration of the communication. Used in telephone calls.</span><span class="lang-hi"><strong>सर्किट स्विचिंग:</strong> संचार की अवधि के लिए प्रेषक और रिसीवर के बीच एक समर्पित भौतिक पथ स्थापित किया जाता है। टेलीफोन कॉल में उपयोग किया जाता है।</span></li>
+                        <li><span class="lang-en"><strong>Message Switching:</strong> The entire message is sent from node to node, stored, and then forwarded (store-and-forward).</span><span class="lang-hi"><strong>संदेश स्विचिंग:</strong> पूरा संदेश नोड से नोड तक भेजा जाता है, संग्रहीत किया जाता है, और फिर अग्रेषित किया जाता है (स्टोर-एंड-फॉरवर्ड)।</span></li>
+                        <li><span class="lang-en"><strong>Packet Switching:</strong> The message is broken into fixed-size packets. Each packet is sent independently and reassembled at the destination. Used by the internet.</span><span class="lang-hi"><strong>पैकेट स्विचिंग:</strong> संदेश को निश्चित आकार के पैकेट में तोड़ा जाता है। प्रत्येक पैकेट स्वतंत्र रूप से भेजा जाता है और गंतव्य पर फिर से जोड़ा जाता है। इंटरनेट द्वारा उपयोग किया जाता है।</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500">
+                <span class="lang-en">&copy; 2024 Computer Course for Students. Happy Learning!</span>
+                <span class="lang-hi">© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!</span>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.getElementById('lang-toggle-btn');
+            const englishElements = document.querySelectorAll('.lang-en');
+            const hindiElements = document.querySelectorAll('.lang-hi');
+            let currentLang = 'en';
+
+            function setLanguage(lang) {
+                if (lang === 'hi') {
+                    englishElements.forEach(el => el.style.display = 'none');
+                    hindiElements.forEach(el => el.style.display = 'inline');
+                    toggleButton.textContent = 'English';
+                } else {
+                    hindiElements.forEach(el => el.style.display = 'none');
+                    englishElements.forEach(el => el.style.display = 'inline');
+                    toggleButton.textContent = 'हिन्दी';
+                }
+                currentLang = lang;
+            }
+
+            toggleButton.addEventListener('click', function () {
+                const newLang = currentLang === 'en' ? 'hi' : 'en';
+                setLanguage(newLang);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                         targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Set initial language
+            setLanguage('en');
+        });
+    </script>
+
+</body>
+</html>

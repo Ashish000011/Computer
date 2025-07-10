@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: A Journey Through the History of Computing</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Set the default font for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+
+        /* Custom gradient for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #a21caf 100%);
+        }
+        
+        /* Custom styling for the timeline line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            height: 100%;
+            width: 4px;
+            background: #374151; /* bg-gray-700 */
+            border-radius: 2px;
+        }
+
+        /* Custom styling for the timeline dot */
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #374151; /* bg-gray-700 */
+            border: 4px solid #4f46e5; /* border-indigo-600 */
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter1">Chapter 1</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#mechanical-era" class="text-gray-300 hover:text-white transition-colors" data-key="nav_mechanical">Mechanical Era</a>
+                    <a href="#generations" class="text-gray-300 hover:text-white transition-colors" data-key="nav_generations">Generations</a>
+                    <a href="#classification" class="text-gray-300 hover:text-white transition-colors" data-key="nav_classification">Classification</a>
+                </div>
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">A Journey Through Computing</h1>
+            <p class="mt-4 text-lg md:text-xl text-indigo-200 max-w-3xl mx-auto" data-key="hero_subtitle">Discover the incredible evolution of computers, from ancient calculating tools to the powerful smart devices in our pockets today.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: The Dawn of Calculation -->
+        <section id="mechanical-era" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="mech_title">The Dawn of Calculation</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="mech_subtitle">Before the age of electronics, brilliant minds created mechanical marvels to conquer complex calculations.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card: Abacus -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h9.75a2.25 2.25 0 012.25 2.25zm-2.25 0H5.25a.75.75 0 00-.75.75v9c0 .414.336.75.75.75h13.5a.75.75 0 00.75-.75v-9a.75.75 0 00-.75-.75z" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="abacus_title">c. 3000 BC: The Abacus</h3>
+                    <p class="text-gray-400" data-key="abacus_desc">The world's first calculating device. Developed by Mesopotamians, it used a wooden frame and beads for basic arithmetic.</p>
+                </div>
+                <!-- Card: Napier's Bones -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="napier_title">1617: Napier's Bones</h3>
+                    <p class="text-gray-400" data-key="napier_desc">Invented by John Napier, this clever device used numbered rods as a mechanical aid for multiplication and division.</p>
+                </div>
+                <!-- Card: Pascaline -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                     <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="pascaline_title">1642: The Pascaline</h3>
+                    <p class="text-gray-400" data-key="pascaline_desc">Invented by Blaise Pascal, it was the world's first mechanical calculator, capable of addition and subtraction with carry-overs.</p>
+                </div>
+                <!-- Card: Jacquard's Punch Cards -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                     <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.117 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.117 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="jacquard_title">1800: Jacquard's Punch Cards</h3>
+                    <p class="text-gray-400" data-key="jacquard_desc">Joseph Jacquard's loom used punch cards to store weaving patterns, introducing the concept of stored, readable instructions.</p>
+                </div>
+                <!-- Card: Babbage's Engines -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                     <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="babbage_title">1822 & 1833: Babbage's Engines</h3>
+                    <p class="text-gray-400" data-key="babbage_desc">Charles Babbage, the "Father of the Computer," designed the Difference and Analytical Engines, which had the core components of modern computers.</p>
+                </div>
+                <!-- Card: Ada Lovelace -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                     <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-600/20 mb-4 border border-indigo-500">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-white" data-key="ada_title">Mid-1800s: The First Programmer</h3>
+                    <p class="text-gray-400" data-key="ada_desc">Ada Lovelace wrote the world's first algorithm for Babbage's Analytical Engine, earning her the title of the first computer programmer.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Electronic Computer Generations -->
+        <section id="generations" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="gen_title">The Electronic Generations</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto" data-key="gen_subtitle">The invention of electronic components triggered a series of rapid advancements, each defining a new generation of computing.</p>
+
+            <div class="relative timeline pl-10">
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-12">
+                    <div class="timeline-dot"><span class="text-indigo-400 font-bold">1</span></div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8">
+                        <p class="text-sm text-gray-500 mb-1">1942-1954</p>
+                        <h3 class="font-bold text-2xl mb-2 text-white" data-key="gen1_title">First Generation</h3>
+                        <p class="font-semibold text-indigo-400 mb-2" data-key="gen1_tech">Technology: Vacuum Tubes</p>
+                        <p class="text-gray-400" data-key="gen1_desc">Enormous, room-sized computers using thousands of vacuum tubes. They used Machine Language and punch cards for input. Examples: ENIAC, EDVAC, EDSAC, UNIVAC.</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 2 -->
+                 <div class="relative mb-12">
+                    <div class="timeline-dot"><span class="text-indigo-400 font-bold">2</span></div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8">
+                        <p class="text-sm text-gray-500 mb-1">1955-1964</p>
+                        <h3 class="font-bold text-2xl mb-2 text-white" data-key="gen2_title">Second Generation</h3>
+                        <p class="font-semibold text-indigo-400 mb-2" data-key="gen2_tech">Technology: Transistors</p>
+                        <p class="text-gray-400" data-key="gen2_desc">Transistors replaced vacuum tubes, making computers smaller, faster, and more reliable. Used Assembly Language. First operating systems developed. Examples: Honeywell 400, IBM 7030.</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 3 -->
+                 <div class="relative mb-12">
+                    <div class="timeline-dot"><span class="text-indigo-400 font-bold">3</span></div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8">
+                        <p class="text-sm text-gray-500 mb-1">1965-1974</p>
+                        <h3 class="font-bold text-2xl mb-2 text-white" data-key="gen3_title">Third Generation</h3>
+                        <p class="font-semibold text-indigo-400 mb-2" data-key="gen3_tech">Technology: Integrated Circuits (IC)</p>
+                        <p class="text-gray-400" data-key="gen3_desc">ICs placed many transistors on a single silicon chip. High-Level Languages like COBOL and FORTRAN emerged. Keyboards and monitors were introduced. Examples: CDC 6600, PDP-8.</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 4 -->
+                 <div class="relative mb-12">
+                    <div class="timeline-dot"><span class="text-indigo-400 font-bold">4</span></div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8">
+                        <p class="text-sm text-gray-500 mb-1">1975-1989</p>
+                        <h3 class="font-bold text-2xl mb-2 text-white" data-key="gen4_title">Fourth Generation</h3>
+                        <p class="font-semibold text-indigo-400 mb-2" data-key="gen4_tech">Technology: Microprocessors (VLSI)</p>
+                        <p class="text-gray-400" data-key="gen4_desc">Thousands of ICs on a single chip led to the personal computer (PC). Development of GUIs, the mouse, and computer networks (LAN, WAN). Example: CRAY-1.</p>
+                    </div>
+                </div>
+                <!-- Timeline Item 5 -->
+                 <div class="relative">
+                    <div class="timeline-dot"><span class="text-indigo-400 font-bold">5</span></div>
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8">
+                        <p class="text-sm text-gray-500 mb-1">1989-Present</p>
+                        <h3 class="font-bold text-2xl mb-2 text-white" data-key="gen5_title">Fifth Generation</h3>
+                        <p class="font-semibold text-indigo-400 mb-2" data-key="gen5_tech">Technology: AI & Ultra Large Scale Integration</p>
+                        <p class="text-gray-400" data-key="gen5_desc">Based on parallel processing and Artificial Intelligence. Led to the Internet, mobile computing, and smart devices. Examples: Desktops, Laptops, PARAM supercomputer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Classification of Computers -->
+        <section id="classification">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="class_title">Classification of Computers</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="class_subtitle">Computers can be categorized in different ways, primarily by the type of data they process and by their physical size and power.</p>
+
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="text-2xl font-bold mb-8 text-center text-white" data-key="class_data_title">By Data Representation</h3>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <!-- Analog -->
+                    <div>
+                        <svg class="w-16 h-16 mx-auto text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 17.25V3.75h16.5v13.5h-16.5zM12 8.25l-3.75 3.75m0 0V8.25m3.75 3.75H12m0 0l3.75 3.75M12 15.75V12m0 0l-3.75 3.75m3.75-3.75l3.75 3.75"></path></svg>
+                        <h4 class="font-semibold text-xl mt-4 text-white" data-key="analog_title">Analog</h4>
+                        <p class="text-gray-400 mt-2" data-key="analog_desc">Operates on continuous physical data, like waves. Examples: Speedometer, Thermometer.</p>
+                    </div>
+                    <!-- Digital -->
+                    <div>
+                        <svg class="w-16 h-16 mx-auto text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"></path></svg>
+                        <h4 class="font-semibold text-xl mt-4 text-white" data-key="digital_title">Digital</h4>
+                        <p class="text-gray-400 mt-2" data-key="digital_desc">Operates on discrete values (binary 0s and 1s). Highly accurate. Examples: Laptops, Smartphones.</p>
+                    </div>
+                    <!-- Hybrid -->
+                    <div>
+                        <svg class="w-16 h-16 mx-auto text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c1.355 0 2.707-.158 4.008-.462M12 21c-1.355 0-2.707-.158-4.008-.462m8.016-11.48a4.5 4.5 0 11-8.016 0m8.016 0c.099.38.18.77.247 1.172m-8.51 0c-.067-.402-.148-.792-.247-1.172M12 3c1.355 0 2.707.158 4.008.462M12 3c-1.355 0-2.707.158-4.008.462"></path></svg>
+                        <h4 class="font-semibold text-xl mt-4 text-white" data-key="hybrid_title">Hybrid</h4>
+                        <p class="text-gray-400 mt-2" data-key="hybrid_desc">Combines features of both Analog and Digital computers. Examples: ICU monitors, ATM machines, Petrol Pumps.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-white" data-key="class_size_title">By Speed & Size</h3>
+                    <p class="text-center text-gray-400 max-w-2xl mx-auto mb-8" data-key="class_size_subtitle">From personal devices to planet-scale machines, computers are also classified by their power.</p>
+                    <div class="flex justify-center items-center space-x-2 md:space-x-4 mt-6 text-center font-semibold text-indigo-300 flex-wrap">
+                        <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full m-1 text-sm md:text-base" data-key="micro">Microcomputer</span>
+                        <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full m-1 text-sm md:text-base" data-key="mini">Minicomputer</span>
+                        <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full m-1 text-sm md:text-base" data-key="mainframe">Mainframe</span>
+                        <span class="bg-indigo-600 text-white px-4 py-2 rounded-full m-1 text-sm md:text-base" data-key="super">Supercomputer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Language Toggling -->
+    <script>
+        const translations = {
+            en: {
+                nav_chapter1: "Chapter 1",
+                nav_mechanical: "Mechanical Era",
+                nav_generations: "Generations",
+                nav_classification: "Classification",
+                hero_title: "A Journey Through Computing",
+                hero_subtitle: "Discover the incredible evolution of computers, from ancient calculating tools to the powerful smart devices in our pockets today.",
+                mech_title: "The Dawn of Calculation",
+                mech_subtitle: "Before the age of electronics, brilliant minds created mechanical marvels to conquer complex calculations.",
+                abacus_title: "c. 3000 BC: The Abacus",
+                abacus_desc: "The world's first calculating device. Developed by Mesopotamians, it used a wooden frame and beads for basic arithmetic.",
+                napier_title: "1617: Napier's Bones",
+                napier_desc: "Invented by John Napier, this clever device used numbered rods as a mechanical aid for multiplication and division.",
+                pascaline_title: "1642: The Pascaline",
+                pascaline_desc: "Invented by Blaise Pascal, it was the world's first mechanical calculator, capable of addition and subtraction with carry-overs.",
+                jacquard_title: "1800: Jacquard's Punch Cards",
+                jacquard_desc: "Joseph Jacquard's loom used punch cards to store weaving patterns, introducing the concept of stored, readable instructions.",
+                babbage_title: "1822 & 1833: Babbage's Engines",
+                babbage_desc: "Charles Babbage, the \"Father of the Computer,\" designed the Difference and Analytical Engines, which had the core components of modern computers.",
+                ada_title: "Mid-1800s: The First Programmer",
+                ada_desc: "Ada Lovelace wrote the world's first algorithm for Babbage's Analytical Engine, earning her the title of the first computer programmer.",
+                gen_title: "The Electronic Generations",
+                gen_subtitle: "The invention of electronic components triggered a series of rapid advancements, each defining a new generation of computing.",
+                gen1_title: "First Generation",
+                gen1_tech: "Technology: Vacuum Tubes",
+                gen1_desc: "Enormous, room-sized computers using thousands of vacuum tubes. They used Machine Language and punch cards for input. Examples: ENIAC, EDVAC, EDSAC, UNIVAC.",
+                gen2_title: "Second Generation",
+                gen2_tech: "Technology: Transistors",
+                gen2_desc: "Transistors replaced vacuum tubes, making computers smaller, faster, and more reliable. Used Assembly Language. First operating systems developed. Examples: Honeywell 400, IBM 7030.",
+                gen3_title: "Third Generation",
+                gen3_tech: "Technology: Integrated Circuits (IC)",
+                gen3_desc: "ICs placed many transistors on a single silicon chip. High-Level Languages like COBOL and FORTRAN emerged. Keyboards and monitors were introduced. Examples: CDC 6600, PDP-8.",
+                gen4_title: "Fourth Generation",
+                gen4_tech: "Technology: Microprocessors (VLSI)",
+                gen4_desc: "Thousands of ICs on a single chip led to the personal computer (PC). Development of GUIs, the mouse, and computer networks (LAN, WAN). Example: CRAY-1.",
+                gen5_title: "Fifth Generation",
+                gen5_tech: "Technology: AI & Ultra Large Scale Integration",
+                gen5_desc: "Based on parallel processing and Artificial Intelligence. Led to the Internet, mobile computing, and smart devices. Examples: Desktops, Laptops, PARAM supercomputer.",
+                class_title: "Classification of Computers",
+                class_subtitle: "Computers can be categorized in different ways, primarily by the type of data they process and by their physical size and power.",
+                class_data_title: "By Data Representation",
+                analog_title: "Analog",
+                analog_desc: "Operates on continuous physical data, like waves. Examples: Speedometer, Thermometer.",
+                digital_title: "Digital",
+                digital_desc: "Operates on discrete values (binary 0s and 1s). Highly accurate. Examples: Laptops, Smartphones.",
+                hybrid_title: "Hybrid",
+                hybrid_desc: "Combines features of both Analog and Digital computers. Examples: ICU monitors, ATM machines, Petrol Pumps.",
+                class_size_title: "By Speed & Size",
+                class_size_subtitle: "From personal devices to planet-scale machines, computers are also classified by their power.",
+                micro: "Microcomputer",
+                mini: "Minicomputer",
+                mainframe: "Mainframe",
+                super: "Supercomputer",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter1: "अध्याय 1",
+                nav_mechanical: "यांत्रिक युग",
+                nav_generations: "पीढ़ियाँ",
+                nav_classification: "वर्गीकरण",
+                hero_title: "कम्प्यूटिंग के इतिहास की एक यात्रा",
+                hero_subtitle: "कंप्यूटर के अविश्वसनीय विकास की खोज करें, प्राचीन गणना उपकरणों से लेकर आज हमारी जेब में मौजूद शक्तिशाली स्मार्ट उपकरणों तक।",
+                mech_title: "गणना का उदय",
+                mech_subtitle: "इलेक्ट्रॉनिक्स के युग से पहले, प्रतिभाशाली दिमागों ने जटिल गणनाओं को जीतने के लिए यांत्रिक चमत्कार बनाए।",
+                abacus_title: "लगभग 3000 ईसा पूर्व: अबैकस",
+                abacus_desc: "दुनिया का पहला गणना उपकरण। मेसोपोटामिया के लोगों द्वारा विकसित, इसमें बुनियादी अंकगणित के लिए एक लकड़ी का फ्रेम और मोतियों का उपयोग किया गया था।",
+                napier_title: "1617: नेपियर की हड्डियाँ",
+                napier_desc: "जॉन नेपियर द्वारा आविष्कार किया गया, यह चतुर उपकरण गुणा और भाग के लिए एक यांत्रिक सहायता के रूप में क्रमांकित छड़ों का उपयोग करता था।",
+                pascaline_title: "1642: पास्कलाइन",
+                pascaline_desc: "ब्लेज़ पास्कल द्वारा आविष्कार किया गया, यह दुनिया का पहला यांत्रिक कैलकुलेटर था, जो कैरी-ओवर के साथ जोड़ और घटाव में सक्षम था।",
+                jacquard_title: "1800: जैक्वार्ड के पंच कार्ड",
+                jacquard_desc: "जोसेफ जैक्वार्ड के करघे ने बुनाई पैटर्न को संग्रहीत करने के लिए पंच कार्ड का उपयोग किया, जिससे संग्रहीत, पठनीय निर्देशों की अवधारणा पेश हुई।",
+                babbage_title: "1822 और 1833: बैबेज के इंजन",
+                babbage_desc: "चार्ल्स बैबेज, 'कंप्यूटर के जनक', ने डिफरेंस और एनालिटिकल इंजन डिजाइन किए, जिनमें आधुनिक कंप्यूटरों के मुख्य घटक थे।",
+                ada_title: "1800 के मध्य: पहली प्रोग्रामर",
+                ada_desc: "एडा लवलेस ने बैबेज के एनालिटिकल इंजन के लिए दुनिया का पहला एल्गोरिदम लिखा, जिससे उन्हें पहले कंप्यूटर प्रोग्रामर का खिताब मिला।",
+                gen_title: "इलेक्ट्रॉनिक पीढ़ियाँ",
+                gen_subtitle: "इलेक्ट्रॉनिक घटकों के आविष्कार ने तेजी से प्रगति की एक श्रृंखला शुरू की, प्रत्येक कंप्यूटिंग की एक नई पीढ़ी को परिभाषित करता है।",
+                gen1_title: "पहली पीढ़ी",
+                gen1_tech: "प्रौद्योगिकी: वैक्यूम ट्यूब",
+                gen1_desc: "हजारों वैक्यूम ट्यूबों का उपयोग करने वाले विशाल, कमरे के आकार के कंप्यूटर। उन्होंने इनपुट के लिए मशीन भाषा और पंच कार्ड का इस्तेमाल किया। उदाहरण: ENIAC, EDVAC, EDSAC, UNIVAC।",
+                gen2_title: "दूसरी पीढ़ी",
+                gen2_tech: "प्रौद्योगिकी: ट्रांजिस्टर",
+                gen2_desc: "ट्रांजिस्टर ने वैक्यूम ट्यूबों की जगह ले ली, जिससे कंप्यूटर छोटे, तेज और अधिक विश्वसनीय हो गए। असेंबली भाषा का इस्तेमाल किया। पहले ऑपरेटिंग सिस्टम विकसित हुए। उदाहरण: हनीवेल 400, आईबीएम 7030।",
+                gen3_title: "तीसरी पीढ़ी",
+                gen3_tech: "प्रौद्योगिकी: इंटीग्रेटेड सर्किट (IC)",
+                gen3_desc: "IC ने एक सिलिकॉन चिप पर कई ट्रांजिस्टर लगाए। COBOL और FORTRAN जैसी उच्च-स्तरीय भाषाएँ उभरीं। कीबोर्ड और मॉनिटर पेश किए गए। उदाहरण: CDC 6600, PDP-8।",
+                gen4_title: "चौथी पीढ़ी",
+                gen4_tech: "प्रौद्योगिकी: माइक्रोप्रोसेसर (VLSI)",
+                gen4_desc: "एक ही चिप पर हजारों IC ने पर्सनल कंप्यूटर (PC) को जन्म दिया। GUI, माउस और कंप्यूटर नेटवर्क (LAN, WAN) का विकास। उदाहरण: CRAY-1।",
+                gen5_title: "पांचवीं पीढ़ी",
+                gen5_tech: "प्रौद्योगिकी: AI और अल्ट्रा लार्ज स्केल इंटीग्रेशन",
+                gen5_desc: "समानांतर प्रसंस्करण और आर्टिफिशियल इंटेलिजेंस पर आधारित। इंटरनेट, मोबाइल कंप्यूटिंग और स्मार्ट उपकरणों का नेतृत्व किया। उदाहरण: डेस्कटॉप, लैपटॉप, परम सुपर कंप्यूटर।",
+                class_title: "कंप्यूटर का वर्गीकरण",
+                class_subtitle: "कंप्यूटरों को विभिन्न तरीकों से वर्गीकृत किया जा सकता है, मुख्य रूप से उनके द्वारा संसाधित किए जाने वाले डेटा के प्रकार और उनके भौतिक आकार और शक्ति के आधार पर।",
+                class_data_title: "डेटा प्रतिनिधित्व द्वारा",
+                analog_title: "एनालॉग",
+                analog_desc: "लगातार भौतिक डेटा पर काम करता है, जैसे तरंगें। उदाहरण: स्पीडोमीटर, थर्मामीटर।",
+                digital_title: "डिजिटल",
+                digital_desc: "असतत मानों (बाइनरी 0 और 1) पर काम करता है। अत्यधिक सटीक। उदाहरण: लैपटॉप, स्मार्टफोन।",
+                hybrid_title: "हाइब्रिड",
+                hybrid_desc: "एनालॉग और डिजिटल दोनों कंप्यूटरों की विशेषताओं को जोड़ती है। उदाहरण: आईसीयू मॉनिटर, एटीएम मशीनें, पेट्रोल पंप।",
+                class_size_title: "गति और आकार के अनुसार",
+                class_size_subtitle: "व्यक्तिगत उपकरणों से लेकर ग्रह-पैमाने की मशीनों तक, कंप्यूटरों को उनकी शक्ति के अनुसार भी वर्गीकृत किया जाता है।",
+                micro: "माइक्रो कंप्यूटर",
+                mini: "मिनी कंप्यूटर",
+                mainframe: "मेनफ्रेम",
+                super: "सुपर कंप्यूटर",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Set initial language
+        setLanguage('en');
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Computer Organization & Input Devices</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Set the default font for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+
+        /* Custom gradient for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #db2777 0%, #6d28d9 100%);
+        }
+        
+        /* Styles for MCQ buttons */
+        .option-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter3">Chapter 3</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#organization" class="text-gray-300 hover:text-white transition-colors" data-key="nav_organization">Organization</a>
+                    <a href="#input_devices" class="text-gray-300 hover:text-white transition-colors" data-key="nav_input_devices">Input Devices</a>
+                    <a href="#mcqs" class="text-gray-300 hover:text-white transition-colors" data-key="nav_mcqs">MCQs</a>
+                </div>
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">Organization & Input</h1>
+            <p class="mt-4 text-lg md:text-xl text-pink-200 max-w-3xl mx-auto" data-key="hero_subtitle">Understanding the core structure of a computer, its brain (the CPU), and the tools we use to command it.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Computer Organization -->
+        <section id="organization" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="org_title">Fundamental Computer Organization</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="org_subtitle">At its core, a computer's operation is a cycle of receiving input, processing it, and producing output. This is managed by the CPU.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card: Machine Cycle -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="cycle_title">The Machine Cycle (IPO)</h3>
+                    <p class="text-gray-400 mb-6" data-key="cycle_desc">The four fundamental steps the CPU takes to perform any task.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center"><span class="flex-shrink-0 h-8 w-8 rounded-full bg-pink-600/20 text-pink-400 font-bold flex items-center justify-center mr-4">1</span><span data-key="cycle_step1"><b>Fetch:</b> Retrieve data/instructions from RAM.</span></div>
+                        <div class="flex items-center"><span class="flex-shrink-0 h-8 w-8 rounded-full bg-pink-600/20 text-pink-400 font-bold flex items-center justify-center mr-4">2</span><span data-key="cycle_step2"><b>Decode:</b> Translate instructions for the CPU.</span></div>
+                        <div class="flex items-center"><span class="flex-shrink-0 h-8 w-8 rounded-full bg-pink-600/20 text-pink-400 font-bold flex items-center justify-center mr-4">3</span><span data-key="cycle_step3"><b>Execute:</b> Perform the actual command/calculation.</span></div>
+                        <div class="flex items-center"><span class="flex-shrink-0 h-8 w-8 rounded-full bg-pink-600/20 text-pink-400 font-bold flex items-center justify-center mr-4">4</span><span data-key="cycle_step4"><b>Store:</b> Save the result back to memory.</span></div>
+                    </div>
+                </div>
+
+                <!-- Card: CPU Components -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="cpu_title">The Central Processing Unit (CPU)</h3>
+                    <p class="text-gray-400 mb-6" data-key="cpu_desc">The "brain" of the computer, composed of three main parts.</p>
+                    <div class="space-y-4">
+                        <div><h4 class="font-semibold text-pink-400" data-key="cpu_cu_title">Control Unit (CU)</h4><p class="text-sm text-gray-400" data-key="cpu_cu_desc">The coordinator. Manages the flow of data and tells other components what to do.</p></div>
+                        <div><h4 class="font-semibold text-pink-400" data-key="cpu_alu_title">Arithmetic & Logic Unit (ALU)</h4><p class="text-sm text-gray-400" data-key="cpu_alu_desc">The calculator. Performs all mathematical (+, -, *, /) and logical (AND, OR, >,<) operations.</p></div>
+                        <div><h4 class="font-semibold text-pink-400" data-key="cpu_mu_title">Memory Unit (MU) / Registers</h4><p class="text-sm text-gray-400" data-key="cpu_mu_desc">High-speed temporary storage within the CPU for data it's currently working on.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Input Devices -->
+        <section id="input_devices" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="input_title">Input Devices</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="input_subtitle">The tools and peripherals we use to send data and commands to the computer.</p>
+
+            <!-- Keyboard -->
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-8">
+                <h3 class="font-bold text-2xl text-white mb-4" data-key="keyboard_title">Keyboard</h3>
+                <p class="text-gray-400 mb-6" data-key="keyboard_desc">A primary data entry device with around 104 keys. Common layouts include QWERTY, AZERTY, and DVORAK.</p>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_fn_title">Function Keys (F1-F12)</h4><p class="text-sm text-gray-400" data-key="key_fn_desc">Perform special functions (e.g., F1 for Help, F5 for Refresh).</p></div>
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_mod_title">Modifier Keys</h4><p class="text-sm text-gray-400" data-key="key_mod_desc">Modify other keys' actions (Ctrl, Alt, Shift).</p></div>
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_toggle_title">Toggle Keys</h4><p class="text-sm text-gray-400" data-key="key_toggle_desc">Switch between modes (Caps Lock, Num Lock, Scroll Lock).</p></div>
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_nav_title">Navigation Keys</h4><p class="text-sm text-gray-400" data-key="key_nav_desc">Move the cursor (Arrow Keys, Home, End, Page Up/Down).</p></div>
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_special_title">Special Keys</h4><p class="text-sm text-gray-400" data-key="key_special_desc">Includes Esc, Delete, Backspace, Tab, etc.</p></div>
+                    <div><h4 class="font-semibold text-pink-400" data-key="key_security_title">Security Keys</h4><p class="text-sm text-gray-400" data-key="key_security_desc">Ctrl + Alt + Delete opens the Task Manager.</p></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pointing Devices -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="pointing_title">Pointing Devices</h4><p class="text-gray-400" data-key="pointing_desc">Control the cursor on the screen. Includes Mouse, Trackball, Joystick, Touchpad, and Light Pen.</p></div>
+                <!-- Scanners -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="scanner_title">Scanners</h4><p class="text-gray-400" data-key="scanner_desc">Convert physical documents/images into digital format. Types: Flatbed, Sheet-fed, Drum, Hand-held.</p></div>
+                <!-- Readers -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="reader_title">Readers</h4><p class="text-gray-400" data-key="reader_desc">Read specific types of data. Includes OCR (text), OMR (marks), BCR (barcodes), MICR (cheques), MSR (cards).</p></div>
+                <!-- Other Devices -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 lg:col-span-3"><h4 class="font-bold text-xl text-white mb-2" data-key="other_title">Other Input Devices</h4><p class="text-gray-400" data-key="other_desc">Includes MIDI for musical instruments, Microphones for speech recognition, and Digitizers (Graphic Tablets) for drawing.</p></div>
+            </div>
+        </section>
+
+        <!-- Section 3: MCQs -->
+        <section id="mcqs">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="mcq_title">Chapter 3: Knowledge Check</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="mcq_subtitle">Test your understanding of computer organization and input devices with these questions.</p>
+            
+            <div class="space-y-8">
+                <!-- MCQ Item 1 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q1">1. Which of the following is an input device?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q1_opt_a">a) Mouse</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q1_opt_b">b) Keyboard</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q1_opt_c">c) Scanner</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q1_opt_d" data-correct="true">d) All of these</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 2 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q2">2. OCR stands for:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q2_opt_a" data-correct="true">a) Optical Character Recognition</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q2_opt_b">b) Optical CPU Recognition</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q2_opt_c">c) Optimal Character Rendering</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q2_opt_d">d) Other Character Recognition</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- Add the rest of the MCQs in the same interactive format -->
+                <!-- MCQ Item 3 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q3">3. The technology used to read marks on an OMR sheet is:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q3_opt_a">a) BCR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q3_opt_b">b) OCR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q3_opt_c" data-correct="true">c) OMR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q3_opt_d">d) MICR</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 4 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q4">4. The default layout of most keyboards is called:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q4_opt_a">a) ALPHABET</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q4_opt_b" data-correct="true">b) QWERTY</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q4_opt_c">c) ASCII</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q4_opt_d">d) DVORAK</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                 <!-- MCQ Item 5 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q5">5. Which of the following is a pointing device?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q5_opt_a">a) Joystick</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q5_opt_b">b) Mouse</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q5_opt_c">c) Trackball</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q5_opt_d" data-correct="true">d) All of these</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 6 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q6">6. Which key is used to open the "Save As" dialog box in MS Word?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q6_opt_a">a) F1</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q6_opt_b">b) F5</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q6_opt_c">c) F10</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q6_opt_d" data-correct="true">d) F12</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 7 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q7">7. The blinking symbol on the computer screen is called the:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q7_opt_a">a) Mouse</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q7_opt_b">b) Hand</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q7_opt_c" data-correct="true">c) Cursor</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q7_opt_d">d) Logo</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 8 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q8">8. Which key deletes the character to the LEFT of the cursor?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q8_opt_a">a) End</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q8_opt_b">b) Delete</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q8_opt_c">c) Home</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q8_opt_d" data-correct="true">d) Backspace</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 9 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q9">9. Ctrl, Shift, and Alt are called ______ keys.</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q9_opt_a">a) Adjustment</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q9_opt_b">b) Function</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q9_opt_c" data-correct="true">c) Modifier</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q9_opt_d">d) Alphanumeric</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 10 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q10">10. Which device is used to read the magnetic ink characters on a bank cheque?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q10_opt_a">a) OCR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q10_opt_b">b) OMR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q10_opt_c" data-correct="true">c) MICR</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q10_opt_d">d) BCR</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 11 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q11">11. The four steps of the machine cycle, in order, are:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q11_opt_a">a) Fetch, Execute, Decode, Store</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q11_opt_b">b) Decode, Fetch, Execute, Store</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q11_opt_c" data-correct="true">c) Fetch, Decode, Execute, Store</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q11_opt_d">d) Fetch, Decode, Store, Execute</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 12 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q12">12. Which part of the CPU is responsible for performing calculations like addition and subtraction?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q12_opt_a">a) Control Unit (CU)</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q12_opt_b">b) Memory Unit (MU)</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q12_opt_c">c) Register</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q12_opt_d" data-correct="true">d) Arithmetic & Logic Unit (ALU)</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 13 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q13">13. Which function key is used to refresh a window or start a PowerPoint slideshow?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q13_opt_a">a) F2</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q13_opt_b" data-correct="true">b) F5</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q13_opt_c">c) F7</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q13_opt_d">d) F11</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 14 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q14">14. A combination of a keyboard and a visual display unit (monitor) is called a:</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q14_opt_a">a) Mouse</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q14_opt_b">b) Port</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q14_opt_c" data-correct="true">c) Terminal</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q14_opt_d">d) Cable</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+                <!-- MCQ Item 15 -->
+                <div class="mcq-item bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <p class="font-semibold text-white mb-4" data-key="q15">15. Which input device converts analog sound information into a digital form?</p>
+                    <div class="options space-y-2">
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q15_opt_a">a) Bar Code Reader</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q15_opt_b">b) Digitizer</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q15_opt_c">c) Scanner</button>
+                        <button class="option-btn w-full text-left p-3 rounded-md bg-gray-700 hover:bg-gray-600 transition-colors" data-key="q15_opt_d" data-correct="true">d) Microphone</button>
+                    </div>
+                    <p class="feedback mt-3 text-sm font-bold hidden"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Language Toggling and MCQ interactivity -->
+    <script>
+        const translations = {
+            en: {
+                nav_chapter3: "Chapter 3",
+                nav_organization: "Organization",
+                nav_input_devices: "Input Devices",
+                nav_mcqs: "MCQs",
+                hero_title: "Organization & Input",
+                hero_subtitle: "Understanding the core structure of a computer, its brain (the CPU), and the tools we use to command it.",
+                org_title: "Fundamental Computer Organization",
+                org_subtitle: "At its core, a computer's operation is a cycle of receiving input, processing it, and producing output. This is managed by the CPU.",
+                cycle_title: "The Machine Cycle (IPO)",
+                cycle_desc: "The four fundamental steps the CPU takes to perform any task.",
+                cycle_step1: "<b>Fetch:</b> Retrieve data/instructions from RAM.",
+                cycle_step2: "<b>Decode:</b> Translate instructions for the CPU.",
+                cycle_step3: "<b>Execute:</b> Perform the actual command/calculation.",
+                cycle_step4: "<b>Store:</b> Save the result back to memory.",
+                cpu_title: "The Central Processing Unit (CPU)",
+                cpu_desc: "The \"brain\" of the computer, composed of three main parts.",
+                cpu_cu_title: "Control Unit (CU)",
+                cpu_cu_desc: "The coordinator. Manages the flow of data and tells other components what to do.",
+                cpu_alu_title: "Arithmetic & Logic Unit (ALU)",
+                cpu_alu_desc: "The calculator. Performs all mathematical (+, -, *, /) and logical (AND, OR, >,<) operations.",
+                cpu_mu_title: "Memory Unit (MU) / Registers",
+                cpu_mu_desc: "High-speed temporary storage within the CPU for data it's currently working on.",
+                input_title: "Input Devices",
+                input_subtitle: "The tools and peripherals we use to send data and commands to the computer.",
+                keyboard_title: "Keyboard",
+                keyboard_desc: "A primary data entry device with around 104 keys. Common layouts include QWERTY, AZERTY, and DVORAK.",
+                key_fn_title: "Function Keys (F1-F12)",
+                key_fn_desc: "Perform special functions (e.g., F1 for Help, F5 for Refresh).",
+                key_mod_title: "Modifier Keys",
+                key_mod_desc: "Modify other keys' actions (Ctrl, Alt, Shift).",
+                key_toggle_title: "Toggle Keys",
+                key_toggle_desc: "Switch between modes (Caps Lock, Num Lock, Scroll Lock).",
+                key_nav_title: "Navigation Keys",
+                key_nav_desc: "Move the cursor (Arrow Keys, Home, End, Page Up/Down).",
+                key_special_title: "Special Keys",
+                key_special_desc: "Includes Esc, Delete, Backspace, Tab, etc.",
+                key_security_title: "Security Keys",
+                key_security_desc: "Ctrl + Alt + Delete opens the Task Manager.",
+                pointing_title: "Pointing Devices",
+                pointing_desc: "Control the cursor on the screen. Includes Mouse, Trackball, Joystick, Touchpad, and Light Pen.",
+                scanner_title: "Scanners",
+                scanner_desc: "Convert physical documents/images into digital format. Types: Flatbed, Sheet-fed, Drum, Hand-held.",
+                reader_title: "Readers",
+                reader_desc: "Read specific types of data. Includes OCR (text), OMR (marks), BCR (barcodes), MICR (cheques), MSR (cards).",
+                other_title: "Other Input Devices",
+                other_desc: "Includes MIDI for musical instruments, Microphones for speech recognition, and Digitizers (Graphic Tablets) for drawing.",
+                mcq_title: "Chapter 3: Knowledge Check",
+                mcq_subtitle: "Test your understanding of computer organization and input devices with these questions.",
+                q1: "1. Which of the following is an input device?",
+                q1_opt_a: "a) Mouse", q1_opt_b: "b) Keyboard", q1_opt_c: "c) Scanner", q1_opt_d: "d) All of these",
+                q2: "2. OCR stands for:",
+                q2_opt_a: "a) Optical Character Recognition", q2_opt_b: "b) Optical CPU Recognition", q2_opt_c: "c) Optimal Character Rendering", q2_opt_d: "d) Other Character Recognition",
+                q3: "3. The technology used to read marks on an OMR sheet is:",
+                q3_opt_a: "a) BCR", q3_opt_b: "b) OCR", q3_opt_c: "c) OMR", q3_opt_d: "d) MICR",
+                q4: "4. The default layout of most keyboards is called:",
+                q4_opt_a: "a) ALPHABET", q4_opt_b: "b) QWERTY", q4_opt_c: "c) ASCII", q4_opt_d: "d) DVORAK",
+                q5: "5. Which of the following is a pointing device?",
+                q5_opt_a: "a) Joystick", q5_opt_b: "b) Mouse", q5_opt_c: "c) Trackball", q5_opt_d: "d) All of these",
+                q6: "6. Which key is used to open the \"Save As\" dialog box in MS Word?",
+                q6_opt_a: "a) F1", q6_opt_b: "b) F5", q6_opt_c: "c) F10", q6_opt_d: "d) F12",
+                q7: "7. The blinking symbol on the computer screen is called the:",
+                q7_opt_a: "a) Mouse", q7_opt_b: "b) Hand", q7_opt_c: "c) Cursor", q7_opt_d: "d) Logo",
+                q8: "8. Which key deletes the character to the LEFT of the cursor?",
+                q8_opt_a: "a) End", q8_opt_b: "b) Delete", q8_opt_c: "c) Home", q8_opt_d: "d) Backspace",
+                q9: "9. Ctrl, Shift, and Alt are called ______ keys.",
+                q9_opt_a: "a) Adjustment", q9_opt_b: "b) Function", q9_opt_c: "c) Modifier", q9_opt_d: "d) Alphanumeric",
+                q10: "10. Which device is used to read the magnetic ink characters on a bank cheque?",
+                q10_opt_a: "a) OCR", q10_opt_b: "b) OMR", q10_opt_c: "c) MICR", q10_opt_d: "d) BCR",
+                q11: "11. The four steps of the machine cycle, in order, are:",
+                q11_opt_a: "a) Fetch, Execute, Decode, Store", q11_opt_b: "b) Decode, Fetch, Execute, Store", q11_opt_c: "c) Fetch, Decode, Execute, Store", q11_opt_d: "d) Fetch, Decode, Store, Execute",
+                q12: "12. Which part of the CPU is responsible for performing calculations like addition and subtraction?",
+                q12_opt_a: "a) Control Unit (CU)", q12_opt_b: "b) Memory Unit (MU)", q12_opt_c: "c) Register", q12_opt_d: "d) Arithmetic & Logic Unit (ALU)",
+                q13: "13. Which function key is used to refresh a window or start a PowerPoint slideshow?",
+                q13_opt_a: "a) F2", q13_opt_b: "b) F5", q13_opt_c: "c) F7", q13_opt_d: "d) F11",
+                q14: "14. A combination of a keyboard and a visual display unit (monitor) is called a:",
+                q14_opt_a: "a) Mouse", q14_opt_b: "b) Port", q14_opt_c: "c) Terminal", q14_opt_d: "d) Cable",
+                q15: "15. Which input device converts analog sound information into a digital form?",
+                q15_opt_a: "a) Bar Code Reader", q15_opt_b: "b) Digitizer", q15_opt_c: "c) Scanner", q15_opt_d: "d) Microphone",
+                feedback_correct: "Correct!",
+                feedback_incorrect: "Incorrect.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter3: "अध्याय 3",
+                nav_organization: "संगठन",
+                nav_input_devices: "इनपुट डिवाइस",
+                nav_mcqs: "MCQs",
+                hero_title: "संगठन और इनपुट",
+                hero_subtitle: "कंप्यूटर की मूल संरचना, उसके मस्तिष्क (सीपीयू), और उन उपकरणों को समझना जिनका उपयोग हम उसे कमांड देने के लिए करते हैं।",
+                org_title: "मौलिक कंप्यूटर संगठन",
+                org_subtitle: "इसके मूल में, एक कंप्यूटर का संचालन इनपुट प्राप्त करने, उसे संसाधित करने और आउटपुट उत्पन्न करने का एक चक्र है। यह सीपीयू द्वारा प्रबंधित किया जाता है।",
+                cycle_title: "मशीन चक्र (IPO)",
+                cycle_desc: "सीपीयू द्वारा किसी भी कार्य को करने के लिए उठाए गए चार मौलिक कदम।",
+                cycle_step1: "<b>फेच:</b> रैम से डेटा/निर्देश प्राप्त करें।",
+                cycle_step2: "<b>डिकोड:</b> सीपीयू के लिए निर्देशों का अनुवाद करें।",
+                cycle_step3: "<b>एक्सेक्यूट:</b> वास्तविक कमांड/गणना करें।",
+                cycle_step4: "<b>स्टोर:</b> परिणाम को मेमोरी में वापस सहेजें।",
+                cpu_title: "सेंट्रल प्रोसेसिंग यूनिट (सीपीयू)",
+                cpu_desc: "कंप्यूटर का 'मस्तिष्क', तीन मुख्य भागों से बना है।",
+                cpu_cu_title: "कंट्रोल यूनिट (CU)",
+                cpu_cu_desc: "समन्वयक। डेटा के प्रवाह का प्रबंधन करता है और अन्य घटकों को बताता है कि क्या करना है।",
+                cpu_alu_title: "अरिथमैटिक एंड लॉजिक यूनिट (ALU)",
+                cpu_alu_desc: "कैलकुलेटर। सभी गणितीय (+, -, *, /) और तार्किक (AND, OR, >, <) संचालन करता है।",
+                cpu_mu_title: "मेमोरी यूनिट (MU) / रजिस्टर्स",
+                cpu_mu_desc: "सीपीयू के भीतर डेटा के लिए हाई-स्पीड अस्थायी भंडारण जिस पर वह वर्तमान में काम कर रहा है।",
+                input_title: "इनपुट डिवाइस",
+                input_subtitle: "वे उपकरण और पेरिफेरल्स जिनका उपयोग हम कंप्यूटर को डेटा और कमांड भेजने के लिए करते हैं।",
+                keyboard_title: "कीबोर्ड",
+                keyboard_desc: "लगभग 104 कुंजियों वाला एक प्राथमिक डेटा प्रविष्टि उपकरण। सामान्य लेआउट में QWERTY, AZERTY और DVORAK शामिल हैं।",
+                key_fn_title: "फ़ंक्शन कुंजियाँ (F1-F12)",
+                key_fn_desc: "विशेष कार्य करें (जैसे, सहायता के लिए F1, रीफ्रेश के लिए F5)।",
+                key_mod_title: "संशोधक कुंजियाँ",
+                key_mod_desc: "अन्य कुंजियों की क्रियाओं को संशोधित करें (Ctrl, Alt, Shift)।",
+                key_toggle_title: "टॉगल कुंजियाँ",
+                key_toggle_desc: "मोड के बीच स्विच करें (कैप्स लॉक, नम लॉक, स्क्रॉल लॉक)।",
+                key_nav_title: "नेविगेशन कुंजियाँ",
+                key_nav_desc: "कर्सर को स्थानांतरित करें (एरो कीज, होम, एंड, पेज अप/डाउन)।",
+                key_special_title: "विशेष कुंजियाँ",
+                key_special_desc: "इसमें Esc, Delete, Backspace, Tab, आदि शामिल हैं।",
+                key_security_title: "सुरक्षा कुंजियाँ",
+                key_security_desc: "Ctrl + Alt + Delete टास्क मैनेजर खोलता है।",
+                pointing_title: "पॉइंटिंग डिवाइस",
+                pointing_desc: "स्क्रीन पर कर्सर को नियंत्रित करें। इसमें माउस, ट्रैकबॉल, जॉयस्टिक, टचपैड और लाइट पेन शामिल हैं।",
+                scanner_title: "स्कैनर",
+                scanner_desc: "भौतिक दस्तावेजों/छवियों को डिजिटल प्रारूप में परिवर्तित करें। प्रकार: फ्लैटबेड, शीट-फेड, ड्रम, हैंड-हेल्ड।",
+                reader_title: "रीडर",
+                reader_desc: "विशिष्ट प्रकार के डेटा पढ़ें। इसमें OCR (टेक्स्ट), OMR (निशान), BCR (बारकोड), MICR (चेक), MSR (कार्ड) शामिल हैं।",
+                other_title: "अन्य इनपुट डिवाइस",
+                other_desc: "इसमें संगीत वाद्ययंत्रों के लिए MIDI, वाक् पहचान के लिए माइक्रोफोन, और ड्राइंग के लिए डिजिटाइज़र (ग्राफिक टैबलेट) शामिल हैं।",
+                mcq_title: "अध्याय 3: ज्ञान जांच",
+                mcq_subtitle: "इन प्रश्नों के साथ कंप्यूटर संगठन और इनपुट उपकरणों की अपनी समझ का परीक्षण करें।",
+                q1: "1. निम्नलिखित में से कौन एक इनपुट डिवाइस है?",
+                q1_opt_a: "a) माउस", q1_opt_b: "b) कीबोर्ड", q1_opt_c: "c) स्कैनर", q1_opt_d: "d) ये सभी",
+                q2: "2. OCR का मतलब है:",
+                q2_opt_a: "a) ऑप्टिकल कैरेक्टर रिकॉग्निशन", q2_opt_b: "b) ऑप्टिकल सीपीयू रिकॉग्निशन", q2_opt_c: "c) ऑप्टिमल कैरेक्टर रेंडरिंग", q2_opt_d: "d) अदर कैरेक्टर रिकॉग्निशन",
+                q3: "3. OMR शीट पर निशान पढ़ने के लिए उपयोग की जाने वाली तकनीक है:",
+                q3_opt_a: "a) BCR", q3_opt_b: "b) OCR", q3_opt_c: "c) OMR", q3_opt_d: "d) MICR",
+                q4: "4. अधिकांश कीबोर्ड का डिफ़ॉल्ट लेआउट कहलाता है:",
+                q4_opt_a: "a) ALPHABET", q4_opt_b: "b) QWERTY", q4_opt_c: "c) ASCII", q4_opt_d: "d) DVORAK",
+                q5: "5. निम्नलिखित में से कौन एक पॉइंटिंग डिवाइस है?",
+                q5_opt_a: "a) जॉयस्टिक", q5_opt_b: "b) माउस", q5_opt_c: "c) ट्रैकबॉल", q5_opt_d: "d) ये सभी",
+                q6: "6. MS Word में \"Save As\" डायलॉग बॉक्स खोलने के लिए किस कुंजी का उपयोग किया जाता है?",
+                q6_opt_a: "a) F1", q6_opt_b: "b) F5", q6_opt_c: "c) F10", q6_opt_d: "d) F12",
+                q7: "7. कंप्यूटर स्क्रीन पर टिमटिमाते प्रतीक को कहा जाता है:",
+                q7_opt_a: "a) माउस", q7_opt_b: "b) हाथ", q7_opt_c: "c) कर्सर", q7_opt_d: "d) लोगो",
+                q8: "8. कौन सी कुंजी कर्सर के बाईं ओर के अक्षर को हटाती है?",
+                q8_opt_a: "a) एंड", q8_opt_b: "b) डिलीट", q8_opt_c: "c) होम", q8_opt_d: "d) बैकस्पेस",
+                q9: "9. Ctrl, Shift, और Alt को ______ कुंजियाँ कहा जाता है।",
+                q9_opt_a: "a) समायोजन", q9_opt_b: "b) फ़ंक्शन", q9_opt_c: "c) संशोधक", q9_opt_d: "d) अल्फ़ान्यूमेरिक",
+                q10: "10. बैंक चेक पर चुंबकीय स्याही के अक्षरों को पढ़ने के लिए किस उपकरण का उपयोग किया जाता है?",
+                q10_opt_a: "a) OCR", q10_opt_b: "b) OMR", q10_opt_c: "c) MICR", q10_opt_d: "d) BCR",
+                q11: "11. मशीन चक्र के चार चरण, क्रम में, हैं:",
+                q11_opt_a: "a) फेच, एक्सेक्यूट, डिकोड, स्टोर", q11_opt_b: "b) डिकोड, फेच, एक्सेक्यूट, स्टोर", q11_opt_c: "c) फेच, डिकोड, एक्सेक्यूट, स्टोर", q11_opt_d: "d) फेच, डिकोड, स्टोर, एक्सेक्यूट",
+                q12: "12. सीपीयू का कौन सा भाग जोड़ और घटाव जैसी गणना करने के लिए जिम्मेदार है?",
+                q12_opt_a: "a) कंट्रोल यूनिट (CU)", q12_opt_b: "b) मेमोरी यूनिट (MU)", q12_opt_c: "c) रजिस्टर", q12_opt_d: "d) अरिथमैटिक एंड लॉजिक यूनिट (ALU)",
+                q13: "13. किसी विंडो को रीफ्रेश करने या पावरपॉइंट स्लाइड शो शुरू करने के लिए किस फ़ंक्शन कुंजी का उपयोग किया जाता है?",
+                q13_opt_a: "a) F2", q13_opt_b: "b) F5", q13_opt_c: "c) F7", q13_opt_d: "d) F11",
+                q14: "14. कीबोर्ड और विज़ुअल डिस्प्ले यूनिट (मॉनिटर) के संयोजन को कहा जाता है:",
+                q14_opt_a: "a) माउस", q14_opt_b: "b) पोर्ट", q14_opt_c: "c) टर्मिनल", q14_opt_d: "d) केबल",
+                q15: "15. कौन सा इनपुट डिवाइस एनालॉग ध्वनि जानकारी को डिजिटल रूप में परिवर्तित करता है?",
+                q15_opt_a: "a) बार कोड रीडर", q15_opt_b: "b) डिजिटाइज़र", q15_opt_c: "c) स्कैनर", q15_opt_d: "d) माइक्रोफोन",
+                feedback_correct: "सही!",
+                feedback_incorrect: "गलत।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // MCQ Interactivity
+        document.querySelectorAll('.mcq-item').forEach(mcqItem => {
+            const options = mcqItem.querySelectorAll('.option-btn');
+            const feedbackEl = mcqItem.querySelector('.feedback');
+
+            options.forEach(button => {
+                button.addEventListener('click', () => {
+                    const isCorrect = button.getAttribute('data-correct') === 'true';
+
+                    // Disable all buttons for this question
+                    options.forEach(btn => {
+                        btn.disabled = true;
+                        btn.classList.remove('hover:bg-gray-600');
+                        // Highlight the correct answer
+                        if (btn.getAttribute('data-correct') === 'true') {
+                            btn.classList.remove('bg-gray-700');
+                            btn.classList.add('bg-green-600', 'text-white');
+                        }
+                    });
+
+                    if (isCorrect) {
+                        feedbackEl.innerHTML = translations[currentLang].feedback_correct;
+                        feedbackEl.classList.remove('hidden', 'text-red-400');
+                        feedbackEl.classList.add('text-green-400');
+                    } else {
+                        button.classList.remove('bg-gray-700');
+                        button.classList.add('bg-red-600', 'text-white');
+                        feedbackEl.innerHTML = translations[currentLang].feedback_incorrect;
+                        feedbackEl.classList.remove('hidden', 'text-green-400');
+                        feedbackEl.classList.add('text-red-400');
+                    }
+                });
+            });
+        });
+
+
+        // Set initial language
+        setLanguage('en');
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

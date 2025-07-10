@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Output Devices</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #16a34a 0%, #0ea5e9 100%);
+        }
+        /* Animation for CRT Diagram */
+        #electron-beam {
+            animation: scan 4s linear infinite;
+            transform-origin: left center;
+        }
+        @keyframes scan {
+            0%, 100% { top: 20%; }
+            10% { transform: translateX(250px); }
+            11% { top: 30%; transform: translateX(250px); }
+            12% { transform: translateX(0); }
+            20% { top: 30%; }
+            30% { transform: translateX(250px); }
+            31% { top: 40%; transform: translateX(250px); }
+            32% { transform: translateX(0); }
+            40% { top: 40%; }
+            50% { transform: translateX(250px); }
+            51% { top: 50%; transform: translateX(250px); }
+            52% { transform: translateX(0); }
+            60% { top: 50%; }
+            70% { transform: translateX(250px); }
+            71% { top: 60%; transform: translateX(250px); }
+            72% { transform: translateX(0); }
+            80% { top: 60%; }
+            90% { transform: translateX(250px); }
+            91% { top: 70%; transform: translateX(250px); }
+            92% { transform: translateX(0); }
+        }
+        #pixel-grid .pixel {
+            transition: background-color 0.1s;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter5">Chapter 5</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#soft-copy" class="text-gray-300 hover:text-white transition-colors" data-key="nav_soft">Soft Copy</a>
+                    <a href="#hard-copy" class="text-gray-300 hover:text-white transition-colors" data-key="nav_hard">Hard Copy</a>
+                </div>
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">Output Devices</h1>
+            <p class="mt-4 text-lg md:text-xl text-green-200 max-w-3xl mx-auto" data-key="hero_subtitle">Exploring how computers present processed information to us, from digital screens to printed pages.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Soft Copy Output -->
+        <section id="soft-copy" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="soft_title">Soft Copy Output Devices</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="soft_subtitle">Soft copy is intangible, digital output viewed on a screen. The main devices are monitors and projectors.</p>
+            
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-8">
+                <h3 class="font-bold text-2xl text-white mb-4" data-key="monitor_title">Monitors (VDU)</h3>
+                <p class="text-gray-400 mb-6" data-key="monitor_desc">A monitor, or Visual Display Unit, is a screen that displays output. Key technologies include CRT, LCD, LED, and Plasma.</p>
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div><h4 class="font-semibold text-sky-400" data-key="crt_title">CRT</h4><p class="text-sm text-gray-400" data-key="crt_desc">Older, bulky monitors using an electron gun.</p></div>
+                    <div><h4 class="font-semibold text-sky-400" data-key="lcd_title">LCD</h4><p class="text-sm text-gray-400" data-key="lcd_desc">Flatter, more efficient, using liquid crystals.</p></div>
+                    <div><h4 class="font-semibold text-sky-400" data-key="led_title">LED</h4><p class="text-sm text-gray-400" data-key="led_desc">An improved LCD with better contrast and lower power use.</p></div>
+                    <div><h4 class="font-semibold text-sky-400" data-key="plasma_title">Plasma</h4><p class="text-sm text-gray-400" data-key="plasma_desc">Uses ionized gas for high contrast images.</p></div>
+                </div>
+            </div>
+
+            <!-- CRT Animation Section -->
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="font-bold text-2xl text-white mb-2 text-center" data-key="crt_anim_title">How a CRT Monitor Works</h3>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto" data-key="crt_anim_desc">This animation shows how an electron gun fires a beam that scans across a phosphor-coated screen in a zig-zag pattern to create an image, pixel by pixel.</p>
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="relative h-64 w-full bg-black rounded-lg p-4 flex items-center overflow-hidden">
+                        <!-- Electron Gun -->
+                        <div class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-gray-500 rounded-full z-10" title="Electron Gun"></div>
+                        <!-- Electron Beam -->
+                        <div id="electron-beam" class="absolute left-10 h-1 w-2 bg-cyan-400 rounded-full shadow-[0_0_10px_3px_rgba(56,189,248,0.7)]"></div>
+                        <!-- Screen and Pixels -->
+                        <div id="pixel-grid" class="absolute right-4 top-1/2 -translate-y-1/2 grid grid-cols-10 gap-1 w-32 h-48">
+                            <!-- JS will generate pixels -->
+                        </div>
+                    </div>
+                    <div class="text-gray-400 space-y-3">
+                        <p><strong class="text-sky-400" data-key="crt_step1_title">1. Electron Gun:</strong> <span data-key="crt_step1_desc">Fires a controlled beam of electrons.</span></p>
+                        <p><strong class="text-sky-400" data-key="crt_step2_title">2. Magnetic Yoke:</strong> <span data-key="crt_step2_desc">(Not shown) Steers the electron beam with magnetic fields.</span></p>
+                        <p><strong class="text-sky-400" data-key="crt_step3_title">3. Scanning:</strong> <span data-key="crt_step3_desc">The beam scans across the screen from left-to-right, top-to-bottom.</span></p>
+                        <p><strong class="text-sky-400" data-key="crt_step4_title">4. Phosphor Screen:</strong> <span data-key="crt_step4_desc">When electrons hit the phosphor dots, they glow, creating a pixel. The rapid scanning creates a complete image.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Hard Copy Output -->
+        <section id="hard-copy" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="hard_title">Hard Copy Output Devices</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="hard_subtitle">Hard copy is tangible, physical output, most commonly produced by printers and plotters.</p>
+
+            <!-- Impact Printers -->
+            <div class="mb-12">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="impact_title">Impact Printers</h3>
+                    <p class="text-gray-400 mb-6" data-key="impact_desc">Create an image by physically striking an ink ribbon against paper. They are generally noisy. Speed is measured in CPS (Characters Per Second) or LPM (Lines Per Minute).</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="dotmatrix_title">Dot-Matrix Printer</h4><p class="text-sm text-gray-400" data-key="dotmatrix_desc">Uses a print head with pins to form characters with dots. It is old technology but can create carbon copies.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="daisywheel_title">Daisy Wheel Printer</h4><p class="text-sm text-gray-400" data-key="daisywheel_desc">Uses a wheel with characters embossed on it. Produces letter-quality text but is slow and cannot print graphics.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Non-Impact Printers -->
+            <div class="mb-12">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <h3 class="font-bold text-2xl text-white mb-4" data-key="nonimpact_title">Non-Impact Printers</h3>
+                    <p class="text-gray-400 mb-6" data-key="nonimpact_desc">Form an image without striking the paper, making them quieter and faster. Speed is measured in PPM (Pages Per Minute).</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="inkjet_title">Inkjet Printer</h4><p class="text-sm text-gray-400" data-key="inkjet_desc">Sprays tiny droplets of liquid ink onto paper. Inexpensive to buy, but ink cartridges can be costly.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="laser_title">Laser Printer</h4><p class="text-sm text-gray-400" data-key="laser_desc">Uses a laser beam and toner (powdered ink) for high-quality, fast output. The best quality for personal computers.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="thermal_title">Thermal Printer</h4><p class="text-sm text-gray-400" data-key="thermal_desc">Uses heat on special thermochromic paper. Commonly used for printing receipts.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="photo_title">Photo Printer</h4><p class="text-sm text-gray-400" data-key="photo_desc">Optimized for printing high-quality photographs with vivid colors.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="dye_title">Dye-Sublimation Printer</h4><p class="text-sm text-gray-400" data-key="dye_desc">Used by graphic designers for high-quality printing on paper and fabric.</p></div>
+                        <div class="bg-gray-800/50 p-4 rounded-lg"><h4 class="font-semibold text-sky-400" data-key="allinone_title">All-in-One (Hydra) Printer</h4><p class="text-sm text-gray-400" data-key="allinone_desc">A multifunctional device that combines a printer, scanner, copier, and sometimes a fax machine.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plotters -->
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                <h4 class="font-bold text-xl text-white mb-2" data-key="plotter_title">Plotters</h4>
+                <p class="text-gray-400" data-key="plotter_desc">A specialized device that produces high-quality vector graphics by drawing lines with pens. Ideal for blueprints, maps, and engineering designs.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <script>
+        const translations = {
+            en: {
+                nav_chapter5: "Chapter 5",
+                nav_soft: "Soft Copy",
+                nav_hard: "Hard Copy",
+                hero_title: "Output Devices",
+                hero_subtitle: "Exploring how computers present processed information to us, from digital screens to printed pages.",
+                soft_title: "Soft Copy Output Devices",
+                soft_subtitle: "Soft copy is intangible, digital output viewed on a screen. The main devices are monitors and projectors.",
+                monitor_title: "Monitors (VDU)",
+                monitor_desc: "A monitor, or Visual Display Unit, is a screen that displays output. Key technologies include CRT, LCD, LED, and Plasma.",
+                crt_title: "CRT",
+                crt_desc: "Older, bulky monitors using an electron gun.",
+                lcd_title: "LCD",
+                lcd_desc: "Flatter, more efficient, using liquid crystals.",
+                led_title: "LED",
+                led_desc: "An improved LCD with better contrast and lower power use.",
+                plasma_title: "Plasma",
+                plasma_desc: "Uses ionized gas for high contrast images.",
+                crt_anim_title: "How a CRT Monitor Works",
+                crt_anim_desc: "This animation shows how an electron gun fires a beam that scans across a phosphor-coated screen in a zig-zag pattern to create an image, pixel by pixel.",
+                crt_step1_title: "1. Electron Gun:",
+                crt_step1_desc: "Fires a controlled beam of electrons.",
+                crt_step2_title: "2. Magnetic Yoke:",
+                crt_step2_desc: "(Not shown) Steers the electron beam with magnetic fields.",
+                crt_step3_title: "3. Scanning:",
+                crt_step3_desc: "The beam scans across the screen from left-to-right, top-to-bottom.",
+                crt_step4_title: "4. Phosphor Screen:",
+                crt_step4_desc: "When electrons hit the phosphor dots, they glow, creating a pixel. The rapid scanning creates a complete image.",
+                hard_title: "Hard Copy Output Devices",
+                hard_subtitle: "Hard copy is tangible, physical output, most commonly produced by printers and plotters.",
+                impact_title: "Impact Printers",
+                impact_desc: "Create an image by physically striking an ink ribbon against paper. They are generally noisy. Speed is measured in CPS or LPM.",
+                dotmatrix_title: "Dot-Matrix Printer",
+                dotmatrix_desc: "Uses a print head with pins to form characters with dots. It is old technology but can create carbon copies.",
+                daisywheel_title: "Daisy Wheel Printer",
+                daisywheel_desc: "Uses a wheel with characters embossed on it. Produces letter-quality text but is slow and cannot print graphics.",
+                nonimpact_title: "Non-Impact Printers",
+                nonimpact_desc: "Form an image without striking the paper, making them quieter and faster. Speed is measured in PPM (Pages Per Minute).",
+                inkjet_title: "Inkjet Printer",
+                inkjet_desc: "Sprays tiny droplets of liquid ink onto paper. Inexpensive to buy, but ink cartridges can be costly.",
+                laser_title: "Laser Printer",
+                laser_desc: "Uses a laser beam and toner (powdered ink) for high-quality, fast output. The best quality for personal computers.",
+                thermal_title: "Thermal Printer",
+                thermal_desc: "Uses heat on special thermochromic paper. Commonly used for printing receipts.",
+                photo_title: "Photo Printer",
+                photo_desc: "Optimized for printing high-quality photographs with vivid colors.",
+                dye_title: "Dye-Sublimation Printer",
+                dye_desc: "Used by graphic designers for high-quality printing on paper and fabric.",
+                allinone_title: "All-in-One (Hydra) Printer",
+                allinone_desc: "A multifunctional device that combines a printer, scanner, copier, and sometimes a fax machine.",
+                plotter_title: "Plotters",
+                plotter_desc: "A specialized device that produces high-quality vector graphics by drawing lines with pens. Ideal for blueprints, maps, and engineering designs.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter5: "अध्याय 5",
+                nav_soft: "सॉफ्ट कॉपी",
+                nav_hard: "हार्ड कॉपी",
+                hero_title: "आउटपुट डिवाइस",
+                hero_subtitle: "यह जानना कि कंप्यूटर हमें संसाधित जानकारी कैसे प्रस्तुत करते हैं, डिजिटल स्क्रीन से लेकर मुद्रित पृष्ठों तक।",
+                soft_title: "सॉफ्ट कॉपी आउटपुट डिवाइस",
+                soft_subtitle: "सॉफ्ट कॉपी अमूर्त, डिजिटल आउटपुट है जिसे स्क्रीन पर देखा जाता है। मुख्य उपकरण मॉनिटर और प्रोजेक्टर हैं।",
+                monitor_title: "मॉनिटर (VDU)",
+                monitor_desc: "एक मॉनिटर, या विज़ुअल डिस्प्ले यूनिट, एक स्क्रीन है जो आउटपुट प्रदर्शित करती है। प्रमुख प्रौद्योगिकियों में CRT, LCD, LED और प्लाज्मा शामिल हैं।",
+                crt_title: "CRT",
+                crt_desc: "पुराने, भारी मॉनिटर जो एक इलेक्ट्रॉन गन का उपयोग करते हैं।",
+                lcd_title: "LCD",
+                lcd_desc: "अधिक कुशल, लिक्विड क्रिस्टल का उपयोग करते हुए।",
+                led_title: "LED",
+                led_desc: "बेहतर कंट्रास्ट और कम बिजली उपयोग के साथ एक उन्नत एलसीडी।",
+                plasma_title: "प्लाज्मा",
+                plasma_desc: "उच्च कंट्रास्ट छवियों के लिए आयनित गैस का उपयोग करता है।",
+                crt_anim_title: "एक CRT मॉनिटर कैसे काम करता है",
+                crt_anim_desc: "यह एनीमेशन दिखाता है कि कैसे एक इलेक्ट्रॉन गन एक बीम फायर करती है जो एक फॉस्फोर-कोटेड स्क्रीन पर ज़िग-ज़ैग पैटर्न में स्कैन करके पिक्सेल-दर-पिक्सेल एक छवि बनाती है।",
+                crt_step1_title: "1. इलेक्ट्रॉन गन:",
+                crt_step1_desc: "इलेक्ट्रॉनों की एक नियंत्रित किरण फायर करती है।",
+                crt_step2_title: "2. चुंबकीय योक:",
+                crt_step2_desc: "(नहीं दिखाया गया) चुंबकीय क्षेत्रों के साथ इलेक्ट्रॉन बीम को चलाता है।",
+                crt_step3_title: "3. स्कैनिंग:",
+                crt_step3_desc: "बीम स्क्रीन पर बाएं से दाएं, ऊपर से नीचे तक स्कैन करती है।",
+                crt_step4_title: "4. फॉस्फर स्क्रीन:",
+                crt_step4_desc: "जब इलेक्ट्रॉन फॉस्फर डॉट्स से टकराते हैं, तो वे चमकते हैं, एक पिक्सेल बनाते हैं। तेजी से स्कैनिंग एक पूरी छवि बनाती है।",
+                hard_title: "हार्ड कॉपी आउटपुट डिवाइस",
+                hard_subtitle: "हार्ड कॉपी मूर्त, भौतिक आउटपुट है, जो आमतौर पर प्रिंटर और प्लॉटर द्वारा निर्मित होता है।",
+                impact_title: "इम्पैक्ट प्रिंटर",
+                impact_desc: "कागज के खिलाफ एक स्याही रिबन पर भौतिक रूप से प्रहार करके एक छवि बनाएं। वे आम तौर पर शोर करते हैं। गति CPS या LPM में मापी जाती है।",
+                dotmatrix_title: "डॉट-मैट्रिक्स प्रिंटर",
+                dotmatrix_desc: "डॉट्स के साथ अक्षर बनाने के लिए पिन के साथ एक प्रिंट हेड का उपयोग करता है। यह पुरानी तकनीक है लेकिन कार्बन कॉपी बना सकती है।",
+                daisywheel_title: "डेज़ी व्हील प्रिंटर",
+                daisywheel_desc: "एक पहिया का उपयोग करता है जिस पर अक्षर उभरे होते हैं। अक्षर-गुणवत्ता वाला पाठ बनाता है लेकिन धीमा है और ग्राफिक्स प्रिंट नहीं कर सकता।",
+                nonimpact_title: "नॉन-इम्पैक्ट प्रिंटर",
+                nonimpact_desc: "कागज पर प्रहार किए बिना एक छवि बनाएं, जिससे वे शांत और तेज हो जाते हैं। गति PPM (पेज प्रति मिनट) में मापी जाती है।",
+                inkjet_title: "इंकजेट प्रिंटर",
+                inkjet_desc: "कागज पर तरल स्याही की छोटी बूंदों का छिड़काव करता है। खरीदने में सस्ता, लेकिन स्याही कार्ट्रिज महंगी हो सकती हैं।",
+                laser_title: "लेजर प्रिंटर",
+                laser_desc: "उच्च-गुणवत्ता, तेज आउटपुट के लिए एक लेजर बीम और टोनर (पाउडर स्याही) का उपयोग करता है। व्यक्तिगत कंप्यूटरों के लिए सर्वोत्तम गुणवत्ता।",
+                thermal_title: "थर्मल प्रिंटर",
+                thermal_desc: "विशेष थर्मोक्रोमिक पेपर पर गर्मी का उपयोग करता है। आमतौर पर रसीदें छापने के लिए उपयोग किया जाता है।",
+                photo_title: "फोटो प्रिंटर",
+                photo_desc: "चमकीले रंगों के साथ उच्च-गुणवत्ता वाली तस्वीरें छापने के लिए अनुकूलित।",
+                dye_title: "डाई-सब्लिमेशन प्रिंटर",
+                dye_desc: "ग्राफिक डिजाइनरों द्वारा कागज और कपड़े पर उच्च-गुणवत्ता वाली छपाई के लिए उपयोग किया जाता है।",
+                allinone_title: "ऑल-इन-वन ( हाइड्रा) प्रिंटर",
+                allinone_desc: "एक बहुक्रियाशील उपकरण जो एक प्रिंटर, स्कैनर, कॉपियर और कभी-कभी एक फैक्स मशीन को जोड़ता है।",
+                plotter_title: "प्लॉटर",
+                plotter_desc: "एक विशेष उपकरण जो पेन से रेखाएँ खींचकर उच्च-गुणवत्ता वाले वेक्टर ग्राफिक्स का उत्पादन करता है। ब्लूप्रिंट, नक्शे और इंजीनियरिंग डिजाइनों के लिए आदर्श।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // CRT Animation Logic
+        const pixelGrid = document.getElementById('pixel-grid');
+        const beam = document.getElementById('electron-beam');
+        const numPixels = 10 * 18; // 10 columns, 18 rows
+        for (let i = 0; i < numPixels; i++) {
+            const pixel = document.createElement('div');
+            pixel.classList.add('pixel', 'w-2', 'h-2', 'bg-gray-700', 'rounded-full');
+            pixelGrid.appendChild(pixel);
+        }
+        
+        beam.addEventListener('animationiteration', () => {
+            // Reset pixels at the start of each animation cycle
+            pixelGrid.querySelectorAll('.pixel').forEach(p => p.style.backgroundColor = '#374151'); // bg-gray-700
+        });
+
+        function lightUpPixel() {
+            const beamRect = beam.getBoundingClientRect();
+            const gridRect = pixelGrid.getBoundingClientRect();
+            
+            const x = beamRect.left - gridRect.left + beamRect.width;
+            const y = beamRect.top - gridRect.top;
+
+            pixelGrid.querySelectorAll('.pixel').forEach(p => {
+                const pRect = p.getBoundingClientRect();
+                const pCenterX = pRect.left - gridRect.left + pRect.width / 2;
+                const pCenterY = pRect.top - gridRect.top + pRect.height / 2;
+
+                const distance = Math.sqrt(Math.pow(x - pCenterX, 2) + Math.pow(y - pCenterY, 2));
+                
+                if (distance < 15) { // Light up if beam is close
+                    p.style.backgroundColor = '#67e8f9'; // cyan-300
+                }
+            });
+            requestAnimationFrame(lightUpPixel);
+        }
+
+        // Set initial language and start animation
+        setLanguage('en');
+        lightUpPixel();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

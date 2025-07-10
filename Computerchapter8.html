@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Operating System Fundamentals</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+        }
+        /* Animation styles */
+        .hierarchy-layer, .os-node, .os-line {
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .data-packet {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fde047;
+            box-shadow: 0 0 8px #fde047;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter8">Chapter 8</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#intro" class="text-gray-300 hover:text-white transition-colors" data-key="nav_intro">Introduction</a>
+                    <a href="#types" class="text-gray-300 hover:text-white transition-colors" data-key="nav_types">OS Types</a>
+                    <a href="#ui" class="text-gray-300 hover:text-white transition-colors" data-key="nav_ui">UI Elements</a>
+                </div>
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">The Operating System</h1>
+            <p class="mt-4 text-lg md:text-xl text-orange-200 max-w-3xl mx-auto" data-key="hero_subtitle">The foundational software that manages all hardware resources and acts as the bridge between you and your computer.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Introduction -->
+        <section id="intro" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="intro_title">Introduction to the OS</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="intro_subtitle">The Operating System (OS) is the core software that brings a computer to life, managing everything from the CPU to the applications you use.</p>
+            
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="font-bold text-2xl text-white mb-2 text-center" data-key="hierarchy_title">The Software Hierarchy</h3>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto" data-key="hierarchy_desc">This animation shows how different software layers are built on top of the hardware, with the OS acting as the critical intermediary.</p>
+                <div id="hierarchy-anim" class="relative h-64 w-full max-w-md mx-auto flex flex-col-reverse items-center justify-end space-y-reverse space-y-2">
+                    <div class="hierarchy-layer opacity-0 translate-y-4 w-full p-3 bg-red-600 rounded-lg text-center font-bold" data-key="layer_app">Application Software</div>
+                    <div class="hierarchy-layer opacity-0 translate-y-4 w-11/12 p-3 bg-orange-600 rounded-lg text-center font-bold" data-key="layer_sys">System Software (OS)</div>
+                    <div class="hierarchy-layer opacity-0 translate-y-4 w-10/12 p-3 bg-yellow-600 rounded-lg text-center font-bold" data-key="layer_hw">Hardware</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Types of Operating Systems -->
+        <section id="types" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="types_title">Types of Operating Systems</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="types_subtitle">Operating systems are designed for different purposes, from managing large networks to running specific tasks on small devices.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Distributed OS Animation -->
+                <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+                    <h3 class="font-bold text-xl text-white mb-4" data-key="dist_title">Distributed OS</h3>
+                    <p class="text-gray-400 mb-6" data-key="dist_desc">Uses multiple processors to handle jobs, distributing tasks for better performance. This animation shows jobs being sent to different CPUs.</p>
+                    <div id="dist-anim" class="relative h-48 w-full flex flex-col items-center justify-between">
+                        <div class="os-node w-40 h-12 bg-orange-600 rounded-lg flex items-center justify-center font-bold" data-key="dist_sys">Computer System</div>
+                        <div class="w-full flex justify-around">
+                            <div class="os-node w-16 h-10 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="cpu1">CPU 1</div>
+                            <div class="os-node w-16 h-10 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="cpu2">CPU 2</div>
+                            <div class="os-node w-16 h-10 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="cpu3">CPU 3</div>
+                        </div>
+                        <div class="data-packet" id="dist-pack-1"></div>
+                        <div class="data-packet" id="dist-pack-2"></div>
+                    </div>
+                </div>
+
+                <!-- Network OS Animation -->
+                <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+                    <h3 class="font-bold text-xl text-white mb-4" data-key="net_title">Network OS (NOS)</h3>
+                    <p class="text-gray-400 mb-6" data-key="net_desc">Runs on a server to manage network resources and allow file/printer sharing between clients, as shown in the animation.</p>
+                    <div id="net-anim" class="relative h-48 w-full flex items-center justify-center">
+                        <div class="os-node w-32 h-16 bg-orange-600 rounded-lg flex items-center justify-center font-bold z-10" data-key="net_server">File Server</div>
+                        <div class="os-node absolute top-0 left-0 w-24 h-12 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="client1">Client 1</div>
+                        <div class="os-node absolute top-0 right-0 w-24 h-12 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="client2">Client 2</div>
+                        <div class="os-node absolute bottom-0 left-0 w-24 h-12 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="client3">Client 3</div>
+                        <div class="os-node absolute bottom-0 right-0 w-24 h-12 bg-gray-600 rounded-lg flex items-center justify-center font-bold" data-key="client4">Client 4</div>
+                        <div class="data-packet" id="net-pack-1"></div>
+                        <div class="data-packet" id="net-pack-2"></div>
+                    </div>
+                </div>
+            </div>
+             <div class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="batch_title">Batch OS</h4><p class="text-gray-400" data-key="batch_desc">The earliest type of OS. Processed jobs in batches without direct user interaction.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="rtos_title">Real-Time OS (RTOS)</h4><p class="text-gray-400" data-key="rtos_desc">Responds to inputs instantly with no delay. Used in critical systems like robotics and medical devices.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="embed_title">Embedded OS</h4><p class="text-gray-400" data-key="embed_desc">A specialized OS designed for a single purpose within a device, like in an ATM, car, or washing machine.</p></div>
+            </div>
+        </section>
+
+        <!-- Section 3: UI and GUI Elements -->
+        <section id="ui" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="ui_title">User Interfaces & GUI Elements</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="ui_subtitle">How we interact with the OS, from typing commands to clicking on graphical icons and controls.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700"><h3 class="font-bold text-2xl text-white mb-4" data-key="cui_title">CUI (Command-Line Interface)</h3><p class="text-gray-400" data-key="cui_desc">A text-based interface where users type commands to interact with the OS. Powerful but less intuitive. Examples: MS-DOS, UNIX.</p></div>
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700"><h3 class="font-bold text-2xl text-white mb-4" data-key="gui_title">GUI (Graphical User Interface)</h3><p class="text-gray-400" data-key="gui_desc">A visual interface using windows, icons, menus, and a pointer. Easy to learn and use. Examples: Windows, macOS.</p></div>
+            </div>
+
+            <div class="bg-gray-800/50 p-8 mt-8 rounded-xl shadow-lg border border-gray-700">
+                <h3 class="font-bold text-2xl text-white mb-6 text-center" data-key="controls_title">Common GUI Controls</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
+                    <div><h4 class="font-semibold text-orange-400" data-key="datepicker_title">Date Picker</h4><p class="text-sm text-gray-400" data-key="datepicker_desc">A calendar for selecting dates.</p></div>
+                    <div><h4 class="font-semibold text-orange-400" data-key="checkbox_title">Check Box</h4><p class="text-sm text-gray-400" data-key="checkbox_desc">Allows selecting multiple options.</p></div>
+                    <div><h4 class="font-semibold text-orange-400" data-key="radio_title">Radio Button</h4><p class="text-sm text-gray-400" data-key="radio_desc">Allows selecting only one option.</p></div>
+                    <div><h4 class="font-semibold text-orange-400" data-key="slider_title">Slider</h4><p class="text-sm text-gray-400" data-key="slider_desc">Selects a value from a range.</p></div>
+                    <div><h4 class="font-semibold text-orange-400" data-key="spinner_title">Spinner</h4><p class="text-sm text-gray-400" data-key="spinner_desc">Increases/decreases a value.</p></div>
+                    <div><h4 class="font-semibold text-orange-400" data-key="listbox_title">List Box</h4><p class="text-sm text-gray-400" data-key="listbox_desc">A box with a scrollable list of items.</p></div>
+                    <div class="sm:col-span-2 md:col-span-1 lg:col-span-2"><h4 class="font-semibold text-orange-400" data-key="dropdown_title">Drop-Down List</h4><p class="text-sm text-gray-400" data-key="dropdown_desc">A compact list that reveals options on click.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <script>
+        const translations = {
+            en: {
+                nav_chapter8: "Chapter 8",
+                nav_intro: "Introduction",
+                nav_types: "OS Types",
+                nav_ui: "UI Elements",
+                hero_title: "The Operating System",
+                hero_subtitle: "The foundational software that manages all hardware resources and acts as the bridge between you and your computer.",
+                intro_title: "Introduction to the OS",
+                intro_subtitle: "The Operating System (OS) is the core software that brings a computer to life, managing everything from the CPU to the applications you use.",
+                hierarchy_title: "The Software Hierarchy",
+                hierarchy_desc: "This animation shows how different software layers are built on top of the hardware, with the OS acting as the critical intermediary.",
+                layer_app: "Application Software",
+                layer_sys: "System Software (OS)",
+                layer_hw: "Hardware",
+                types_title: "Types of Operating Systems",
+                types_subtitle: "Operating systems are designed for different purposes, from managing large networks to running specific tasks on small devices.",
+                dist_title: "Distributed OS",
+                dist_desc: "Uses multiple processors to handle jobs, distributing tasks for better performance. This animation shows jobs being sent to different CPUs.",
+                dist_sys: "Computer System",
+                cpu1: "CPU 1",
+                cpu2: "CPU 2",
+                cpu3: "CPU 3",
+                net_title: "Network OS (NOS)",
+                net_desc: "Runs on a server to manage network resources and allow file/printer sharing between clients, as shown in the animation.",
+                net_server: "File Server",
+                client1: "Client 1",
+                client2: "Client 2",
+                client3: "Client 3",
+                client4: "Client 4",
+                batch_title: "Batch OS",
+                batch_desc: "The earliest type of OS. Processed jobs in batches without direct user interaction.",
+                rtos_title: "Real-Time OS (RTOS)",
+                rtos_desc: "Responds to inputs instantly with no delay. Used in critical systems like robotics and medical devices.",
+                embed_title: "Embedded OS",
+                embed_desc: "A specialized OS designed for a single purpose within a device, like in an ATM, car, or washing machine.",
+                ui_title: "User Interfaces & GUI Elements",
+                ui_subtitle: "How we interact with the OS, from typing commands to clicking on graphical icons and controls.",
+                cui_title: "CUI (Command-Line Interface)",
+                cui_desc: "A text-based interface where users type commands to interact with the OS. Powerful but less intuitive. Examples: MS-DOS, UNIX.",
+                gui_title: "GUI (Graphical User Interface)",
+                gui_desc: "A visual interface using windows, icons, menus, and a pointer. Easy to learn and use. Examples: Windows, macOS.",
+                controls_title: "Common GUI Controls",
+                datepicker_title: "Date Picker",
+                datepicker_desc: "A calendar for selecting dates.",
+                checkbox_title: "Check Box",
+                checkbox_desc: "Allows selecting multiple options.",
+                radio_title: "Radio Button",
+                radio_desc: "Allows selecting only one option.",
+                slider_title: "Slider",
+                slider_desc: "Selects a value from a range.",
+                spinner_title: "Spinner",
+                spinner_desc: "Increases/decreases a value.",
+                listbox_title: "List Box",
+                listbox_desc: "A box with a scrollable list of items.",
+                dropdown_title: "Drop-Down List",
+                dropdown_desc: "A compact list that reveals options on click.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter8: "अध्याय 8",
+                nav_intro: "परिचय",
+                nav_types: "OS के प्रकार",
+                nav_ui: "UI तत्व",
+                hero_title: "ऑपरेटिंग सिस्टम",
+                hero_subtitle: "मौलिक सॉफ्टवेयर जो सभी हार्डवेयर संसाधनों का प्रबंधन करता है और आपके और आपके कंप्यूटर के बीच पुल का काम करता है।",
+                intro_title: "OS का परिचय",
+                intro_subtitle: "ऑपरेटING सिस्टम (OS) कोर सॉफ्टवेयर है जो कंप्यूटर को जीवंत करता है, सीपीयू से लेकर आपके द्वारा उपयोग किए जाने वाले एप्लिकेशन तक सब कुछ प्रबंधित करता है।",
+                hierarchy_title: "सॉफ्टवेयर पदानुक्रम",
+                hierarchy_desc: "यह एनीमेशन दिखाता है कि कैसे विभिन्न सॉफ्टवेयर परतें हार्डवेयर के ऊपर बनाई गई हैं, जिसमें OS महत्वपूर्ण मध्यस्थ के रूप में कार्य करता है।",
+                layer_app: "एप्लीकेशन सॉफ्टवेयर",
+                layer_sys: "सिस्टम सॉफ्टवेयर (OS)",
+                layer_hw: "हार्डवेयर",
+                types_title: "ऑपरेटिंग सिस्टम के प्रकार",
+                types_subtitle: "ऑपरेटिंग सिस्टम विभिन्न उद्देश्यों के लिए डिज़ाइन किए गए हैं, बड़े नेटवर्क के प्रबंधन से लेकर छोटे उपकरणों पर विशिष्ट कार्य चलाने तक।",
+                dist_title: "डिस्ट्रिब्यूटेड OS",
+                dist_desc: "नौकरियों को संभालने के लिए कई प्रोसेसर का उपयोग करता है, बेहतर प्रदर्शन के लिए कार्यों को वितरित करता है। यह एनीमेशन विभिन्न सीपीयू को भेजे जा रहे कार्यों को दिखाता है।",
+                dist_sys: "कंप्यूटर सिस्टम",
+                cpu1: "सीपीयू 1",
+                cpu2: "सीपीयू 2",
+                cpu3: "सीपीयू 3",
+                net_title: "नेटवर्क OS (NOS)",
+                net_desc: "नेटवर्क संसाधनों का प्रबंधन करने और ग्राहकों के बीच फ़ाइल/प्रिंटर साझा करने की अनुमति देने के लिए एक सर्वर पर चलता है, जैसा कि एनीमेशन में दिखाया गया है।",
+                net_server: "फाइल सर्वर",
+                client1: "क्लाइंट 1",
+                client2: "क्लाइंट 2",
+                client3: "क्लाइंट 3",
+                client4: "क्लाइंट 4",
+                batch_title: "बैच OS",
+                batch_desc: "OS का सबसे पहला प्रकार। बिना सीधे उपयोगकर्ता सहभागिता के बैचों में नौकरियों को संसाधित किया।",
+                rtos_title: "रियल-टाइम OS (RTOS)",
+                rtos_desc: "बिना किसी देरी के तुरंत इनपुट का जवाब देता है। रोबोटिक्स और चिकित्सा उपकरणों जैसे महत्वपूर्ण प्रणालियों में उपयोग किया जाता है।",
+                embed_title: "एंबेडेड OS",
+                embed_desc: "एक उपकरण के भीतर एक ही उद्देश्य के लिए डिज़ाइन किया गया एक विशेष OS, जैसे एटीएम, कार, या वॉशिंग मशीन में।",
+                ui_title: "यूजर इंटरफेस और GUI तत्व",
+                ui_subtitle: "हम OS के साथ कैसे इंटरैक्ट करते हैं, कमांड टाइप करने से लेकर ग्राफिकल आइकन और नियंत्रणों पर क्लिक करने तक।",
+                cui_title: "CUI (कमांड-लाइन इंटरफेस)",
+                cui_desc: "एक टेक्स्ट-आधारित इंटरफ़ेस जहाँ उपयोगकर्ता OS के साथ इंटरैक्ट करने के लिए कमांड टाइप करते हैं। शक्तिशाली लेकिन कम सहज। उदाहरण: MS-DOS, UNIX।",
+                gui_title: "GUI (ग्राफिकल यूजर इंटरफेस)",
+                gui_desc: "एक विज़ुअल इंटरफ़ेस जिसमें विंडो, आइकन, मेनू और एक पॉइंटर का उपयोग किया जाता है। सीखना और उपयोग करना आसान है। उदाहरण: विंडोज, मैकओएस।",
+                controls_title: "सामान्य GUI नियंत्रण",
+                datepicker_title: "डेट पिकर",
+                datepicker_desc: "तिथियों का चयन करने के लिए एक कैलेंडर।",
+                checkbox_title: "चेक बॉक्स",
+                checkbox_desc: "कई विकल्पों का चयन करने की अनुमति देता है।",
+                radio_title: "रेडियो बटन",
+                radio_desc: "केवल एक विकल्प का चयन करने की अनुमति देता है।",
+                slider_title: "स्लाइडर",
+                slider_desc: "एक सीमा से एक मान का चयन करता है।",
+                spinner_title: "स्पिनर",
+                spinner_desc: "एक मान बढ़ाता/घटाता है।",
+                listbox_title: "लिस्ट बॉक्स",
+                listbox_desc: "आइटमों की एक स्क्रॉल करने योग्य सूची वाला एक बॉक्स।",
+                dropdown_title: "ड्रॉप-डाउन सूची",
+                dropdown_desc: "एक कॉम्पैक्ट सूची जो क्लिक करने पर विकल्प प्रकट करती है।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Animation Logic
+        function runHierarchyAnimation() {
+            const layers = document.querySelectorAll('#hierarchy-anim .hierarchy-layer');
+            let delay = 0;
+            layers.forEach(layer => {
+                setTimeout(() => {
+                    layer.style.opacity = '1';
+                    layer.style.transform = 'translateY(0)';
+                }, delay);
+                delay += 500;
+            });
+        }
+        
+        function runDistAnimation() {
+            const packet1 = document.getElementById('dist-pack-1');
+            const packet2 = document.getElementById('dist-pack-2');
+            const system = document.querySelector('#dist-anim .os-node');
+            const cpus = document.querySelectorAll('#dist-anim .flex.justify-around .os-node');
+            
+            if (!packet1 || !packet2 || !system || cpus.length < 3) return;
+
+            const systemPos = { x: system.offsetLeft + system.offsetWidth / 2, y: system.offsetTop + system.offsetHeight };
+            const cpuPos = Array.from(cpus).map(cpu => ({ x: cpu.offsetLeft + cpu.offsetWidth / 2, y: cpu.offsetTop }));
+
+            async function loop() {
+                // Packet 1 to CPU 1
+                packet1.style.transition = 'none';
+                packet1.style.opacity = '1';
+                packet1.style.transform = `translate(${systemPos.x}px, ${systemPos.y}px)`;
+                await new Promise(r => setTimeout(r, 100));
+                packet1.style.transition = 'transform 1s ease-out';
+                packet1.style.transform = `translate(${cpuPos[0].x}px, ${cpuPos[0].y}px)`;
+                
+                // Packet 2 to CPU 3
+                packet2.style.transition = 'none';
+                packet2.style.opacity = '1';
+                packet2.style.transform = `translate(${systemPos.x}px, ${systemPos.y}px)`;
+                await new Promise(r => setTimeout(r, 600));
+                packet2.style.transition = 'transform 1s ease-out';
+                packet2.style.transform = `translate(${cpuPos[2].x}px, ${cpuPos[2].y}px)`;
+
+                await new Promise(r => setTimeout(r, 2000));
+                packet1.style.opacity = '0';
+                packet2.style.opacity = '0';
+                await new Promise(r => setTimeout(r, 1000));
+            }
+            setInterval(loop, 4000);
+        }
+
+        function runNetAnimation() {
+            const packet1 = document.getElementById('net-pack-1');
+            const packet2 = document.getElementById('net-pack-2');
+            const server = document.querySelector('#net-anim .os-node[data-key="net_server"]');
+            const clients = document.querySelectorAll('#net-anim .os-node[data-key^="client"]');
+            
+            if (!packet1 || !packet2 || !server || clients.length < 4) return;
+            
+            const serverPos = { x: server.offsetLeft + server.offsetWidth / 2, y: server.offsetTop + server.offsetHeight / 2 };
+            const clientPos = Array.from(clients).map(c => ({ x: c.offsetLeft + c.offsetWidth / 2, y: c.offsetTop + c.offsetHeight / 2 }));
+
+            async function loop() {
+                 // Client 1 to Server
+                packet1.style.transition = 'none';
+                packet1.style.opacity = '1';
+                packet1.style.transform = `translate(${clientPos[0].x}px, ${clientPos[0].y}px)`;
+                await new Promise(r => setTimeout(r, 100));
+                packet1.style.transition = 'transform 1s ease-in-out';
+                packet1.style.transform = `translate(${serverPos.x}px, ${serverPos.y}px)`;
+                
+                // Server to Client 4
+                packet2.style.transition = 'none';
+                packet2.style.opacity = '1';
+                packet2.style.transform = `translate(${serverPos.x}px, ${serverPos.y}px)`;
+                await new Promise(r => setTimeout(r, 500));
+                packet2.style.transition = 'transform 1s ease-in-out';
+                packet2.style.transform = `translate(${clientPos[3].x}px, ${clientPos[3].y}px)`;
+
+                await new Promise(r => setTimeout(r, 2000));
+                packet1.style.opacity = '0';
+                packet2.style.opacity = '0';
+                await new Promise(r => setTimeout(r, 1000));
+            }
+            setInterval(loop, 4000);
+        }
+
+        // Set initial language and start animations
+        document.addEventListener('DOMContentLoaded', () => {
+             setLanguage('en');
+             runHierarchyAnimation();
+             runDistAnimation();
+             runNetAnimation();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

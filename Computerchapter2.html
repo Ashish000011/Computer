@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Types of Computers & The Booting Process</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Set the default font for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+
+        /* Custom gradient for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #059669 0%, #4f46e5 100%);
+        }
+        
+        /* Custom styling for the booting process steps */
+        .step-line::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem; /* past the icon */
+            left: 2rem; /* center of the icon */
+            bottom: 0;
+            width: 4px;
+            background-color: #374151; /* bg-gray-700 */
+            z-index: 0;
+        }
+        /* Ensure the last step doesn't have a line */
+        .step-line:last-child::before {
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter2">Chapter 2</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#classification" class="text-gray-300 hover:text-white transition-colors" data-key="nav_classification">Classification</a>
+                    <a href="#booting" class="text-gray-300 hover:text-white transition-colors" data-key="nav_booting">Booting Process</a>
+                </div>
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">Computer Types & Booting</h1>
+            <p class="mt-4 text-lg md:text-xl text-emerald-200 max-w-3xl mx-auto" data-key="hero_subtitle">From pocket-sized devices to room-sized giants, and the process that brings them all to life.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Classification of Computers -->
+        <section id="classification" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="class_title">Classification by Size and Power</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="class_subtitle">Computers range from personal devices to massive systems, each designed for specific tasks and user loads.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card: Microcomputer -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-full bg-indigo-600/20 border border-indigo-500 flex items-center justify-center">
+                           <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h9.75a2.25 2.25 0 012.25 2.25zm-2.25 0H5.25a.75.75 0 00-.75.75v9c0 .414.336.75.75.75h13.5a.75.75 0 00.75-.75v-9a.75.75 0 00-.75-.75z" /></svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-2xl text-white" data-key="micro_title">Microcomputer</h3>
+                            <p class="text-indigo-400 font-semibold" data-key="micro_users">Single-User</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4" data-key="micro_desc">Also known as Personal Computers (PC). They are the most common type, designed for individual use. The first was the Altair 8800.</p>
+                    <p class="text-gray-400"><b class="text-gray-300" data-key="examples">Examples:</b> <span data-key="micro_examples">Desktop, Laptop, Smartphone, Workstation.</span></p>
+                </div>
+
+                <!-- Card: Minicomputer -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-full bg-indigo-600/20 border border-indigo-500 flex items-center justify-center">
+                           <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.512 2.72a3 3 0 01-4.682-2.72A9.094 9.094 0 016 18.72m-3 0a9.094 9.094 0 013.741-.479m7.512 0a9.094 9.094 0 003.741-.479M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9z" /></svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-2xl text-white" data-key="mini_title">Minicomputer</h3>
+                            <p class="text-indigo-400 font-semibold" data-key="mini_users">~100 Users</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4" data-key="mini_desc">More powerful than microcomputers, capable of supporting multiple users simultaneously. Often used as servers in small organizations.</p>
+                    <p class="text-gray-400"><b class="text-gray-300" data-key="examples">Use Cases:</b> <span data-key="mini_examples">Small businesses, factories, and schools.</span></p>
+                </div>
+
+                <!-- Card: Mainframe -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-full bg-indigo-600/20 border border-indigo-500 flex items-center justify-center">
+                           <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6M9 15.75h6" /></svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-2xl text-white" data-key="main_title">Mainframe Computer</h3>
+                            <p class="text-indigo-400 font-semibold" data-key="main_users">~1000s of Users</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4" data-key="main_desc">Large, powerful systems used by large organizations for critical applications that process massive amounts of data.</p>
+                    <p class="text-gray-400"><b class="text-gray-300" data-key="examples">Use Cases:</b> <span data-key="main_examples">Banking, airline reservations, stock exchanges.</span></p>
+                </div>
+
+                <!-- Card: Supercomputer -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 hover:-translate-y-1 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-full bg-indigo-600/20 border border-indigo-500 flex items-center justify-center">
+                           <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path d="M14.25 6.087c0-1.718-.676-3.3-1.844-4.472A4.506 4.506 0 008.32 0a4.506 4.506 0 00-4.086 1.615C3.068 2.787 2.392 4.37 2.392 6.087v11.826c0 1.718.676 3.3 1.844 4.472A4.506 4.506 0 008.32 24a4.506 4.506 0 004.086-1.615c1.168-1.172 1.844-2.754 1.844-4.472V6.087z" /><path d="M9.75 6.087c0-1.718.676-3.3 1.844-4.472A4.506 4.506 0 0115.68 0a4.506 4.506 0 014.086 1.615c1.168 1.172 1.844 2.754 1.844 4.472v11.826c0 1.718-.676 3.3-1.844 4.472A4.506 4.506 0 0115.68 24a4.506 4.506 0 01-4.086-1.615c-1.168-1.172-1.844-2.754-1.844-4.472V6.087z" /></svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-2xl text-white" data-key="super_title">Supercomputer</h3>
+                            <p class="text-indigo-400 font-semibold" data-key="super_users">Specialized Tasks</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4" data-key="super_desc">The fastest and most powerful computers, designed for complex scientific and engineering problems. Speed is measured in FLOPS.</p>
+                    <p class="text-gray-400"><b class="text-gray-300" data-key="examples">Examples:</b> <span data-key="super_examples">CRAY-1 (first), FRONTIER (fastest), PARAM (Indian).</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Booting Process -->
+        <section id="booting" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="boot_title">The Booting Process</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto" data-key="boot_subtitle">Booting is the startup sequence that brings a computer to life, loading the operating system into memory so it can start working.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Cold Boot -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="font-bold text-xl text-white mb-2" data-key="cold_boot_title">Hard Booting (Cold Boot)</h3>
+                    <p class="text-gray-400" data-key="cold_boot_desc">Starting a computer from a completely powered-off state. It's the initial startup when you press the power button.</p>
+                </div>
+                <!-- Warm Boot -->
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="font-bold text-xl text-white mb-2" data-key="warm_boot_title">Soft Booting (Warm Boot)</h3>
+                    <p class="text-gray-400" data-key="warm_boot_desc">Restarting a computer that is already on. This process is faster but risks losing unsaved data.</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700">
+                 <h3 class="text-2xl font-bold mb-8 text-center text-white" data-key="boot_seq_title">Booting Sequence</h3>
+                <!-- Step 1: Power On -->
+                <div class="relative pl-16 pb-8 step-line">
+                    <div class="absolute top-0 left-0 h-16 w-16 rounded-full bg-gray-700 border-4 border-indigo-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" /></svg>
+                    </div>
+                    <h4 class="font-bold text-xl text-white" data-key="step1_title">Power On & BIOS</h4>
+                    <p class="text-gray-400" data-key="step1_desc">When you press the power button, the CPU activates the BIOS (Basic Input/Output System), a program on the motherboard.</p>
+                </div>
+                <!-- Step 2: POST -->
+                <div class="relative pl-16 pb-8 step-line">
+                    <div class="absolute top-0 left-0 h-16 w-16 rounded-full bg-gray-700 border-4 border-indigo-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h4 class="font-bold text-xl text-white" data-key="step2_title">POST (Power-On Self-Test)</h4>
+                    <p class="text-gray-400" data-key="step2_desc">The BIOS runs a self-diagnostic test to check that all essential hardware components (RAM, keyboard, etc.) are working correctly.</p>
+                </div>
+                <!-- Step 3: Bootstrap Loader -->
+                <div class="relative pl-16 pb-8 step-line">
+                    <div class="absolute top-0 left-0 h-16 w-16 rounded-full bg-gray-700 border-4 border-indigo-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" /></svg>
+                    </div>
+                    <h4 class="font-bold text-xl text-white" data-key="step3_title">Bootstrap Loader</h4>
+                    <p class="text-gray-400" data-key="step3_desc">The BIOS locates the Master Boot Record (MBR) on the hard drive and loads a small program called the Bootstrap Loader.</p>
+                </div>
+                <!-- Step 4: OS Load -->
+                <div class="relative pl-16">
+                    <div class="absolute top-0 left-0 h-16 w-16 rounded-full bg-gray-700 border-4 border-indigo-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" /></svg>
+                    </div>
+                    <h4 class="font-bold text-xl text-white" data-key="step4_title">Operating System Loads</h4>
+                    <p class="text-gray-400" data-key="step4_desc">The Bootstrap Loader's job is to load the main kernel of the Operating System from the hard drive into the main memory (RAM). Once loaded, the OS takes control, and your computer is ready to use.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Language Toggling -->
+    <script>
+        const translations = {
+            en: {
+                nav_chapter2: "Chapter 2",
+                nav_classification: "Classification",
+                nav_booting: "Booting Process",
+                hero_title: "Computer Types & Booting",
+                hero_subtitle: "From pocket-sized devices to room-sized giants, and the process that brings them all to life.",
+                class_title: "Classification by Size and Power",
+                class_subtitle: "Computers range from personal devices to massive systems, each designed for specific tasks and user loads.",
+                micro_title: "Microcomputer",
+                micro_users: "Single-User",
+                micro_desc: "Also known as Personal Computers (PC). They are the most common type, designed for individual use. The first was the Altair 8800.",
+                mini_title: "Minicomputer",
+                mini_users: "~100 Users",
+                mini_desc: "More powerful than microcomputers, capable of supporting multiple users simultaneously. Often used as servers in small organizations.",
+                main_title: "Mainframe Computer",
+                main_users: "~1000s of Users",
+                main_desc: "Large, powerful systems used by large organizations for critical applications that process massive amounts of data.",
+                super_title: "Supercomputer",
+                super_users: "Specialized Tasks",
+                super_desc: "The fastest and most powerful computers, designed for complex scientific and engineering problems. Speed is measured in FLOPS.",
+                examples: "Examples:",
+                use_cases: "Use Cases:",
+                micro_examples: "Desktop, Laptop, Smartphone, Workstation.",
+                mini_examples: "Small businesses, factories, and schools.",
+                main_examples: "Banking, airline reservations, stock exchanges.",
+                super_examples: "CRAY-1 (first), FRONTIER (fastest), PARAM (Indian).",
+                boot_title: "The Booting Process",
+                boot_subtitle: "Booting is the startup sequence that brings a computer to life, loading the operating system into memory so it can start working.",
+                cold_boot_title: "Hard Booting (Cold Boot)",
+                cold_boot_desc: "Starting a computer from a completely powered-off state. It's the initial startup when you press the power button.",
+                warm_boot_title: "Soft Booting (Warm Boot)",
+                warm_boot_desc: "Restarting a computer that is already on. This process is faster but risks losing unsaved data.",
+                boot_seq_title: "Booting Sequence",
+                step1_title: "Power On & BIOS",
+                step1_desc: "When you press the power button, the CPU activates the BIOS (Basic Input/Output System), a program on the motherboard.",
+                step2_title: "POST (Power-On Self-Test)",
+                step2_desc: "The BIOS runs a self-diagnostic test to check that all essential hardware components (RAM, keyboard, etc.) are working correctly.",
+                step3_title: "Bootstrap Loader",
+                step3_desc: "The BIOS locates the Master Boot Record (MBR) on the hard drive and loads a small program called the Bootstrap Loader.",
+                step4_title: "Operating System Loads",
+                step4_desc: "The Bootstrap Loader's job is to load the main kernel of the Operating System from the hard drive into the main memory (RAM). Once loaded, the OS takes control, and your computer is ready to use.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter2: "अध्याय 2",
+                nav_classification: "वर्गीकरण",
+                nav_booting: "बूटिंग प्रक्रिया",
+                hero_title: "कंप्यूटर के प्रकार और बूटिंग",
+                hero_subtitle: "जेब के आकार के उपकरणों से लेकर कमरे के आकार के दिग्गजों तक, और वह प्रक्रिया जो उन सभी को जीवंत करती है।",
+                class_title: "आकार और शक्ति के अनुसार वर्गीकरण",
+                class_subtitle: "कंप्यूटर व्यक्तिगत उपकरणों से लेकर विशाल प्रणालियों तक होते हैं, प्रत्येक को विशिष्ट कार्यों और उपयोगकर्ता भार के लिए डिज़ाइन किया गया है।",
+                micro_title: "माइक्रो कंप्यूटर",
+                micro_users: "एकल-उपयोगकर्ता",
+                micro_desc: "पर्सनल कंप्यूटर (पीसी) के रूप में भी जाना जाता है। वे सबसे आम प्रकार हैं, जो व्यक्तिगत उपयोग के लिए डिज़ाइन किए गए हैं। पहला अल्टेयर 8800 था।",
+                mini_title: "मिनी कंप्यूटर",
+                mini_users: "~100 उपयोगकर्ता",
+                mini_desc: "माइक्रो कंप्यूटर से अधिक शक्तिशाली, एक साथ कई उपयोगकर्ताओं का समर्थन करने में सक्षम। अक्सर छोटे संगठनों में सर्वर के रूप में उपयोग किया जाता है।",
+                main_title: "मेनफ्रेम कंप्यूटर",
+                main_users: "~1000 उपयोगकर्ता",
+                main_desc: "बड़े, शक्तिशाली सिस्टम जो बड़े संगठनों द्वारा महत्वपूर्ण अनुप्रयोगों के लिए उपयोग किए जाते हैं जो भारी मात्रा में डेटा संसाधित करते हैं।",
+                super_title: "सुपर कंप्यूटर",
+                super_users: "विशिष्ट कार्य",
+                super_desc: "सबसे तेज़ और सबसे शक्तिशाली कंप्यूटर, जो जटिल वैज्ञानिक और इंजीनियरिंग समस्याओं के लिए डिज़ाइन किए गए हैं। गति FLOPS में मापी जाती है।",
+                examples: "उदाहरण:",
+                use_cases: "उपयोग:",
+                micro_examples: "डेस्कटॉप, लैपटॉप, स्मार्टफोन, वर्कस्टेशन।",
+                mini_examples: "छोटे व्यवसाय, कारखाने और स्कूल।",
+                main_examples: "बैंकिंग, एयरलाइन आरक्षण, स्टॉक एक्सचेंज।",
+                super_examples: "CRAY-1 (पहला), FRONTIER (सबसे तेज), PARAM (भारतीय)।",
+                boot_title: "बूटिंग प्रक्रिया",
+                boot_subtitle: "बूटिंग एक स्टार्टअप अनुक्रम है जो कंप्यूटर को जीवंत करता है, ऑपरेटिंग सिस्टम को मेमोरी में लोड करता है ताकि वह काम करना शुरू कर सके।",
+                cold_boot_title: "हार्ड बूटिंग (कोल्ड बूट)",
+                cold_boot_desc: "पूरी तरह से बंद अवस्था से कंप्यूटर शुरू करना। जब आप पावर बटन दबाते हैं तो यह प्रारंभिक स्टार्टअप होता है।",
+                warm_boot_title: "सॉफ्ट बूटिंग (वार्म बूट)",
+                warm_boot_desc: "पहले से चालू कंप्यूटर को पुनरारंभ करना। यह प्रक्रिया तेज है लेकिन इसमें सहेजे नहीं गए डेटा को खोने का खतरा है।",
+                boot_seq_title: "बूटिंग अनुक्रम",
+                step1_title: "पावर ऑन और BIOS",
+                step1_desc: "जब आप पावर बटन दबाते हैं, तो सीपीयू BIOS (बेसिक इनपुट/आउटपुट सिस्टम) को सक्रिय करता है, जो मदरबोर्ड पर एक प्रोग्राम है।",
+                step2_title: "POST (पावर-ऑन सेल्फ-टेस्ट)",
+                step2_desc: "BIOS यह जांचने के लिए एक स्व-निदान परीक्षण चलाता है कि सभी आवश्यक हार्डवेयर घटक (रैम, कीबोर्ड, आदि) सही तरीके से काम कर रहे हैं।",
+                step3_title: "बूटस्ट्रैप लोडर",
+                step3_desc: "BIOS हार्ड ड्राइव पर मास्टर बूट रिकॉर्ड (एमबीआर) का पता लगाता है और बूटस्ट्रैप लोडर नामक एक छोटा प्रोग्राम लोड करता है।",
+                step4_title: "ऑपरेटिंग सिस्टम लोड होता है",
+                step4_desc: "बूटस्ट्रैप लोडर का काम ऑपरेटिंग सिस्टम के मुख्य कर्नेल को हार्ड ड्राइव से मुख्य मेमोरी (रैम) में लोड करना है। एक बार लोड होने के बाद, ओएस नियंत्रण कर लेता है, और आपका कंप्यूटर उपयोग के लिए तैयार है।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Set initial language
+        setLanguage('en');
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

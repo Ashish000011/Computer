@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: The Microprocessor</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Set the default font for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+
+        /* Custom gradient for the hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #d946ef 0%, #1d4ed8 100%);
+        }
+        
+        /* Custom styling for the timeline */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            height: 100%;
+            width: 4px;
+            background: #374151; /* bg-gray-700 */
+            border-radius: 2px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #374151; /* bg-gray-700 */
+            border: 4px solid #7c3aed; /* border-violet-600 */
+        }
+
+        /* Styles for MCQ buttons */
+        .option-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter4">Chapter 4</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#history" class="text-gray-300 hover:text-white transition-colors" data-key="nav_history">History</a>
+                    <a href="#architecture" class="text-gray-300 hover:text-white transition-colors" data-key="nav_architecture">Architecture</a>
+                    <a href="#registers" class="text-gray-300 hover:text-white transition-colors" data-key="nav_registers">Registers</a>
+                </div>
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">The Microprocessor</h1>
+            <p class="mt-4 text-lg md:text-xl text-fuchsia-200 max-w-3xl mx-auto" data-key="hero_subtitle">A deep dive into the computer's brain: its history, characteristics, and the internal components that make it work.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: History of the Microprocessor -->
+        <section id="history" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="history_title">A Timeline of Microprocessor Development</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto" data-key="history_subtitle">From simple kitchen computers to the complex chips of the modern era, the microprocessor's journey is one of rapid innovation.</p>
+
+            <div class="relative timeline pl-10">
+                <!-- Timeline Item -->
+                <div class="relative mb-12"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1965_title">1965: The First Step</h3><p class="text-gray-400" data-key="y1965_desc">The first use of an SSI (Small Scale Integration) chip-based microprocessor appears in the H316 Kitchen Computer.</p></div></div>
+                <div class="relative mb-12"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1971_title">1971: Intel 4004</h3><p class="text-gray-400" data-key="y1971_desc">The world's first commercially available microprocessor, developed by Ted Hoff at Intel. It was a 4-bit chip with 2,300 transistors.</p></div></div>
+                <div class="relative mb-12"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1974_title">1974: The 8-bit Era</h3><p class="text-gray-400" data-key="y1974_desc">Intel releases the 8-bit Intel 8080, and Motorola releases the competing 8-bit Motorola 6800, pushing computing power forward.</p></div></div>
+                <div class="relative mb-12"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1975_title">1975: The First Microcomputer</h3><p class="text-gray-400" data-key="y1975_desc">The Altair 8800, the first personal computer based on a microprocessor (the Intel 8080), is developed.</p></div></div>
+                <div class="relative mb-12"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1978_title">1978-1979: The 16-bit Leap</h3><p class="text-gray-400" data-key="y1978_desc">Intel (8086, 8088) and Motorola (68000) introduce powerful 16-bit microprocessors, setting the stage for more advanced personal computers.</p></div></div>
+                <div class="relative"><div class="timeline-dot"></div><div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 ml-8"><h3 class="font-bold text-2xl mb-2 text-white" data-key="y1999_title">1999: Millions of Transistors</h3><p class="text-gray-400" data-key="y1999_desc">Intel releases the Pentium 3 processor, a chip containing millions of transistors, showcasing incredible progress in miniaturization.</p></div></div>
+            </div>
+        </section>
+
+        <!-- Section 2: Architecture -->
+        <section id="architecture" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="arch_title">Microprocessor Architectures</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="arch_subtitle">The design philosophy of a processor determines how it handles instructions, impacting its speed and efficiency.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="cisc_title">CISC</h4><p class="text-gray-400" data-key="cisc_desc"><b>(Complex Instruction Set Computer)</b> Uses a large number of complex, multi-step instructions to perform tasks.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="risc_title">RISC</h4><p class="text-gray-400" data-key="risc_desc"><b>(Reduced Instruction Set Computer)</b> Uses a smaller, highly optimized set of simple instructions, which can be executed very quickly.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="epic_title">EPIC</h4><p class="text-gray-400" data-key="epic_desc"><b>(Explicitly Parallel Instruction Computing)</b> A modern architecture that bundles instructions for the processor to execute in parallel, increasing efficiency.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="multi_title">Multicore</h4><p class="text-gray-400" data-key="multi_desc">Modern processors containing two or more independent processing units (cores) on a single chip to handle multiple tasks at once.</p></div>
+            </div>
+        </section>
+
+        <!-- Section 3: CPU Registers -->
+        <section id="registers" class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="reg_title">Inside the CPU: Registers</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="reg_subtitle">Registers are small, ultra-fast storage locations within the CPU that hold data and instructions temporarily for immediate access.</p>
+
+            <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div><h4 class="font-semibold text-violet-400" data-key="mar_title">MAR (Memory Address Register)</h4><p class="text-sm text-gray-400" data-key="mar_desc">Holds the memory address of the current data/instruction being accessed.</p></div>
+                <div><h4 class="font-semibold text-violet-400" data-key="mbr_title">MBR / MDR (Memory Buffer/Data Register)</h4><p class="text-sm text-gray-400" data-key="mbr_desc">Holds the actual data/instruction fetched from or waiting to be sent to memory.</p></div>
+                <div><h4 class="font-semibold text-violet-400" data-key="ir_title">IR (Instruction Register)</h4><p class="text-sm text-gray-400" data-key="ir_desc">Holds the specific instruction that is currently being decoded and executed.</p></div>
+                <div><h4 class="font-semibold text-violet-400" data-key="pc_title">PC (Program Counter)</h4><p class="text-sm text-gray-400" data-key="pc_desc">Holds the memory address of the *next* instruction to be executed, ensuring correct program flow.</p></div>
+                <div><h4 class="font-semibold text-violet-400" data-key="ac_title">AC / ACC (Accumulator)</h4><p class="text-sm text-gray-400" data-key="ac_desc">A general-purpose register that temporarily holds intermediate results from the ALU.</p></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Language Toggling -->
+    <script>
+        const translations = {
+            en: {
+                nav_chapter4: "Chapter 4",
+                nav_history: "History",
+                nav_architecture: "Architecture",
+                nav_registers: "Registers",
+                hero_title: "The Microprocessor",
+                hero_subtitle: "A deep dive into the computer's brain: its history, characteristics, and the internal components that make it work.",
+                history_title: "A Timeline of Microprocessor Development",
+                history_subtitle: "From simple kitchen computers to the complex chips of the modern era, the microprocessor's journey is one of rapid innovation.",
+                y1965_title: "1965: The First Step",
+                y1965_desc: "The first use of an SSI (Small Scale Integration) chip-based microprocessor appears in the H316 Kitchen Computer.",
+                y1971_title: "1971: Intel 4004",
+                y1971_desc: "The world's first commercially available microprocessor, developed by Ted Hoff at Intel. It was a 4-bit chip with 2,300 transistors.",
+                y1974_title: "1974: The 8-bit Era",
+                y1974_desc: "Intel releases the 8-bit Intel 8080, and Motorola releases the competing 8-bit Motorola 6800, pushing computing power forward.",
+                y1975_title: "1975: The First Microcomputer",
+                y1975_desc: "The Altair 8800, the first personal computer based on a microprocessor (the Intel 8080), is developed.",
+                y1978_title: "1978-1979: The 16-bit Leap",
+                y1978_desc: "Intel (8086, 8088) and Motorola (68000) introduce powerful 16-bit microprocessors, setting the stage for more advanced personal computers.",
+                y1999_title: "1999: Millions of Transistors",
+                y1999_desc: "Intel releases the Pentium 3 processor, a chip containing millions of transistors, showcasing incredible progress in miniaturization.",
+                arch_title: "Microprocessor Architectures",
+                arch_subtitle: "The design philosophy of a processor determines how it handles instructions, impacting its speed and efficiency.",
+                cisc_title: "CISC",
+                cisc_desc: "<b>(Complex Instruction Set Computer)</b> Uses a large number of complex, multi-step instructions to perform tasks.",
+                risc_title: "RISC",
+                risc_desc: "<b>(Reduced Instruction Set Computer)</b> Uses a smaller, highly optimized set of simple instructions, which can be executed very quickly.",
+                epic_title: "EPIC",
+                epic_desc: "<b>(Explicitly Parallel Instruction Computing)</b> A modern architecture that bundles instructions for the processor to execute in parallel, increasing efficiency.",
+                multi_title: "Multicore",
+                multi_desc: "Modern processors containing two or more independent processing units (cores) on a single chip to handle multiple tasks at once.",
+                reg_title: "Inside the CPU: Registers",
+                reg_subtitle: "Registers are small, ultra-fast storage locations within the CPU that hold data and instructions temporarily for immediate access.",
+                mar_title: "MAR (Memory Address Register)",
+                mar_desc: "Holds the memory address of the current data/instruction being accessed.",
+                mbr_title: "MBR / MDR (Memory Buffer/Data Register)",
+                mbr_desc: "Holds the actual data/instruction fetched from or waiting to be sent to memory.",
+                ir_title: "IR (Instruction Register)",
+                ir_desc: "Holds the specific instruction that is currently being decoded and executed.",
+                pc_title: "PC (Program Counter)",
+                pc_desc: "Holds the memory address of the *next* instruction to be executed, ensuring correct program flow.",
+                ac_title: "AC / ACC (Accumulator)",
+                ac_desc: "A general-purpose register that temporarily holds intermediate results from the ALU.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter4: "अध्याय 4",
+                nav_history: "इतिहास",
+                nav_architecture: "आर्किटेक्चर",
+                nav_registers: "रजिस्टर्स",
+                hero_title: "माइक्रोप्रोसेसर",
+                hero_subtitle: "कंप्यूटर के मस्तिष्क में एक गहरा गोता: इसका इतिहास, विशेषताएँ, और आंतरिक घटक जो इसे काम करने में मदद करते हैं।",
+                history_title: "माइक्रोप्रोसेसर विकास की एक समयरेखा",
+                history_subtitle: "साधारण किचन कंप्यूटर से लेकर आधुनिक युग के जटिल चिप्स तक, माइक्रोप्रोसेसर की यात्रा तीव्र नवाचार की है।",
+                y1965_title: "1965: पहला कदम",
+                y1965_desc: "H316 किचन कंप्यूटर में SSI (स्मॉल स्केल इंटीग्रेशन) चिप-आधारित माइक्रोप्रोसेसर का पहला उपयोग हुआ।",
+                y1971_title: "1971: इंटेल 4004",
+                y1971_desc: "दुनिया का पहला व्यावसायिक रूप से उपलब्ध माइक्रोप्रोसेसर, जिसे इंटेल में टेड हॉफ द्वारा विकसित किया गया। यह 2,300 ट्रांजिस्टर वाला 4-बिट चिप था।",
+                y1974_title: "1974: 8-बिट युग",
+                y1974_desc: "इंटेल ने 8-बिट इंटेल 8080 जारी किया, और मोटोरोला ने प्रतिस्पर्धी 8-बिट मोटोरोला 6800 जारी किया, जिससे कंप्यूटिंग शक्ति आगे बढ़ी।",
+                y1975_title: "1975: पहला माइक्रोकंप्यूटर",
+                y1975_desc: "अल्टेयर 8800, एक माइक्रोप्रोसेसर (इंटेल 8080) पर आधारित पहला पर्सनल कंप्यूटर विकसित किया गया।",
+                y1978_title: "1978-1979: 16-बिट की छलांग",
+                y1978_desc: "इंटेल (8086, 8088) और मोटोरोला (68000) ने शक्तिशाली 16-बिट माइक्रोप्रोसेसर पेश किए, जो अधिक उन्नत पर्सनल कंप्यूटरों के लिए मंच तैयार करते हैं।",
+                y1999_title: "1999: लाखों ट्रांजिस्टर",
+                y1999_desc: "इंटेल ने पेंटियम 3 प्रोसेसर जारी किया, एक चिप जिसमें लाखों ट्रांजिस्टर थे, जो लघुकरण में अविश्वसनीय प्रगति को प्रदर्शित करता है।",
+                arch_title: "माइक्रोप्रोसेसर आर्किटेक्चर",
+                arch_subtitle: "एक प्रोसेसर का डिज़ाइन दर्शन यह निर्धारित करता है कि वह निर्देशों को कैसे संभालता है, जो उसकी गति और दक्षता को प्रभावित करता है।",
+                cisc_title: "CISC",
+                cisc_desc: "<b>(कॉम्प्लेक्स इंस्ट्रक्शन सेट कंप्यूटर)</b> कार्यों को करने के लिए बड़ी संख्या में जटिल, बहु-चरणीय निर्देशों का उपयोग करता है।",
+                risc_title: "RISC",
+                risc_desc: "<b>(रिड्यूस्ड इंस्ट्रक्शन सेट कंप्यूटर)</b> सरल निर्देशों के एक छोटे, अत्यधिक अनुकूलित सेट का उपयोग करता है, जिसे बहुत जल्दी निष्पादित किया जा सकता है।",
+                epic_title: "EPIC",
+                epic_desc: "<b>(एक्सप्लीसिटली पैरेलल इंस्ट्रक्शन कंप्यूटिंग)</b> एक आधुनिक आर्किटेक्चर जो प्रोसेसर के लिए निर्देशों को समानांतर में निष्पादित करने के लिए बंडल करता है, जिससे दक्षता बढ़ती है।",
+                multi_title: "मल्टीकोर",
+                multi_desc: "आधुनिक प्रोसेसर जिनमें एक ही चिप पर दो या दो से अधिक स्वतंत्र प्रसंस्करण इकाइयाँ (कोर) होती हैं ताकि एक साथ कई कार्यों को संभाला जा सके।",
+                reg_title: "सीपीयू के अंदर: रजिस्टर्स",
+                reg_subtitle: "रजिस्टर सीपीयू के भीतर छोटे, अल्ट्रा-फास्ट स्टोरेज स्थान होते हैं जो तत्काल पहुंच के लिए डेटा और निर्देशों को अस्थायी रूप से रखते हैं।",
+                mar_title: "MAR (मेमोरी एड्रेस रजिस्टर)",
+                mar_desc: "वर्तमान में एक्सेस किए जा रहे डेटा/निर्देश का मेमोरी पता रखता है।",
+                mbr_title: "MBR / MDR (मेमोरी बफर/डेटा रजिस्टर)",
+                mbr_desc: "मेमोरी से प्राप्त या मेमोरी में भेजे जाने की प्रतीक्षा कर रहे वास्तविक डेटा/निर्देश को रखता है।",
+                ir_title: "IR (इंस्ट्रक्शन रजिस्टर)",
+                ir_desc: "उस विशिष्ट निर्देश को रखता है जिसे वर्तमान में डिकोड और निष्पादित किया जा रहा है।",
+                pc_title: "PC (प्रोग्राम काउंटर)",
+                pc_desc: "निष्पादित होने वाले *अगले* निर्देश का मेमोरी पता रखता है, जिससे सही प्रोग्राम प्रवाह सुनिश्चित होता है।",
+                ac_title: "AC / ACC (एक्युमुलेटर)",
+                ac_desc: "एक सामान्य-उद्देश्य वाला रजिस्टर जो ALU से मध्यवर्ती परिणामों को अस्थायी रूप से रखता है।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Set initial language
+        setLanguage('en');
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

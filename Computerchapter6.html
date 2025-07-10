@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Memory & Data Representation</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #be185d 0%, #2563eb 100%);
+        }
+        /* Animation styles for Memory Hierarchy */
+        .data-packet {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #facc15; /* yellow-400 */
+            border-radius: 50%;
+            box-shadow: 0 0 10px #facc15;
+            transition: all 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-xl font-bold text-white" data-key="nav_chapter6">Chapter 6</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hierarchy" class="text-gray-300 hover:text-white transition-colors" data-key="nav_hierarchy">Hierarchy</a>
+                    <a href="#primary" class="text-gray-300 hover:text-white transition-colors" data-key="nav_primary">Primary Memory</a>
+                    <a href="#secondary" class="text-gray-300 hover:text-white transition-colors" data-key="nav_secondary">Secondary Memory</a>
+                    <a href="#data-rep" class="text-gray-300 hover:text-white transition-colors" data-key="nav_datarep">Data Rep.</a>
+                </div>
+                <button id="lang-toggle" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">हिन्दी</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white text-center py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-key="hero_title">Memory & Data Representation</h1>
+            <p class="mt-4 text-lg md:text-xl text-pink-200 max-w-3xl mx-auto" data-key="hero_subtitle">How computers store, access, and understand information, from the smallest bit to complex codes.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+
+        <!-- Section 1: Memory Hierarchy Animation -->
+        <section id="hierarchy" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="hierarchy_title">The Memory Hierarchy</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="hierarchy_subtitle">This animation shows how the CPU interacts with different levels of memory. The closer the memory, the faster the access.</p>
+            
+            <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                <div id="animation-container" class="relative h-96 w-full flex flex-col justify-around items-center">
+                    <!-- Memory Levels -->
+                    <div id="cpu" class="text-center"><div class="w-24 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold" data-key="cpu">CPU</div></div>
+                    <div id="cache" class="text-center"><div class="w-48 h-12 bg-indigo-600 rounded-lg flex items-center justify-center font-bold" data-key="cache">Cache</div><p class="text-xs text-gray-400" data-key="cache_desc">Fastest</p></div>
+                    <div id="ram" class="text-center"><div class="w-72 h-12 bg-purple-600 rounded-lg flex items-center justify-center font-bold" data-key="ram">RAM</div><p class="text-xs text-gray-400" data-key="ram_desc">Fast</p></div>
+                    <div id="storage" class="text-center"><div class="w-96 h-12 bg-pink-600 rounded-lg flex items-center justify-center font-bold" data-key="storage">Secondary Storage</div><p class="text-xs text-gray-400" data-key="storage_desc">Slowest</p></div>
+                    <!-- Data Packet for Animation -->
+                    <div id="data-packet" class="data-packet"></div>
+                </div>
+                <p id="anim-explanation" class="text-center text-cyan-400 mt-4 h-12"></p>
+            </div>
+        </section>
+
+        <!-- Section 2: Primary Memory -->
+        <section id="primary" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="primary_title">Primary Memory (Main Memory)</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="primary_subtitle">Volatile memory that holds data the CPU is actively using. Its contents are lost when power is off.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="cache_card_title">Cache Memory</h4><p class="text-gray-400" data-key="cache_card_desc">An extremely fast buffer between the CPU and RAM. Uses SRAM technology and has multiple levels (L1, L2, L3).</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="ram_card_title">RAM (Random Access Memory)</h4><p class="text-gray-400" data-key="ram_card_desc">The main 'working' memory. Types include faster SRAM and common, cheaper DRAM which needs refreshing.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="rom_card_title">ROM (Read-Only Memory)</h4><p class="text-gray-400" data-key="rom_card_desc">Non-volatile memory holding startup instructions (BIOS). Types: PROM, EPROM, EEPROM.</p></div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="cmos_card_title">CMOS</h4><p class="text-gray-400" data-key="cmos_card_desc">Stores system configuration settings like date, time, and hardware info, powered by a small battery.</p></div>
+            </div>
+        </section>
+
+        <!-- Section 3: Secondary Memory -->
+        <section id="secondary" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="secondary_title">Secondary Memory (Storage)</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="secondary_subtitle">Non-volatile memory for long-term data storage. It's slower but has a much larger capacity.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="magnetic_title">Magnetic Storage</h4><p class="text-gray-400" data-key="magnetic_desc">Uses magnetism to store data. Includes Hard Disk Drives (HDD), Magnetic Tape, and older Floppy Disks.</p></div>
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="optical_title">Optical Storage</h4><p class="text-gray-400" data-key="optical_desc">Uses lasers to read/write data. Includes CDs (~700MB), DVDs (~4.7GB+), and Blu-ray Discs (25GB+).</p></div>
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700"><h4 class="font-bold text-xl text-white mb-2" data-key="flash_title">Flash / Electronic Storage</h4><p class="text-gray-400" data-key="flash_desc">Uses electronic circuits with no moving parts. Includes fast SSDs, portable Pen Drives, and SD Cards.</p></div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Data Representation -->
+        <section id="data-rep">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white" data-key="datarep_title">Data Representation</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-key="datarep_subtitle">How computers translate complex information into the simple language of binary numbers.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700"><h3 class="font-bold text-2xl text-white mb-4" data-key="units_title">Memory Units</h3><ul class="list-disc list-inside text-gray-400 space-y-2"><li data-key="unit_bit"><b>Bit:</b> Smallest unit (0 or 1)</li><li data-key="unit_nibble"><b>Nibble:</b> 4 bits</li><li data-key="unit_byte"><b>Byte:</b> 8 bits</li><li data-key="unit_kb"><b>Kilobyte (KB):</b> 1024 Bytes</li><li data-key="unit_mb"><b>Megabyte (MB):</b> 1024 KB</li><li data-key="unit_gb"><b>Gigabyte (GB):</b> 1024 MB</li></ul></div>
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700"><h3 class="font-bold text-2xl text-white mb-4" data-key="systems_title">Number Systems & Codes</h3><ul class="list-disc list-inside text-gray-400 space-y-2"><li data-key="sys_binary"><b>Binary (Base 2):</b> Uses 0 and 1.</li><li data-key="sys_octal"><b>Octal (Base 8):</b> Uses 0-7.</li><li data-key="sys_hex"><b>Hexadecimal (Base 16):</b> Uses 0-9 and A-F.</li><li data-key="code_ascii"><b>ASCII:</b> 8-bit code for characters.</li><li data-key="code_unicode"><b>Unicode:</b> 16/32-bit code for all world languages.</li></ul></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center py-6">
+            <p class="text-gray-500" data-key="footer_text">&copy; 2024 Computer Course for Students. Happy Learning!</p>
+        </div>
+    </footer>
+    
+    <script>
+        const translations = {
+            en: {
+                nav_chapter6: "Chapter 6",
+                nav_hierarchy: "Hierarchy",
+                nav_primary: "Primary Memory",
+                nav_secondary: "Secondary Memory",
+                nav_datarep: "Data Rep.",
+                hero_title: "Memory & Data Representation",
+                hero_subtitle: "How computers store, access, and understand information, from the smallest bit to complex codes.",
+                hierarchy_title: "The Memory Hierarchy",
+                hierarchy_subtitle: "This animation shows how the CPU interacts with different levels of memory. The closer the memory, the faster the access.",
+                cpu: "CPU",
+                cache: "Cache",
+                ram: "RAM",
+                storage: "Secondary Storage",
+                cache_desc: "Fastest",
+                ram_desc: "Fast",
+                storage_desc: "Slowest",
+                anim_exp1: "CPU needs data. First, it checks the ultra-fast Cache.",
+                anim_exp2: "Cache Hit! The data is found and sent directly to the CPU.",
+                anim_exp3: "Cache Miss! The data isn't in the Cache. The request goes to RAM.",
+                anim_exp4: "Data is found in RAM and sent to the Cache and CPU.",
+                anim_exp5: "RAM Miss! Data is fetched from slower Secondary Storage.",
+                primary_title: "Primary Memory (Main Memory)",
+                primary_subtitle: "Volatile memory that holds data the CPU is actively using. Its contents are lost when power is off.",
+                cache_card_title: "Cache Memory",
+                cache_card_desc: "An extremely fast buffer between the CPU and RAM. Uses SRAM technology and has multiple levels (L1, L2, L3).",
+                ram_card_title: "RAM (Random Access Memory)",
+                ram_card_desc: "The main 'working' memory. Types include faster SRAM and common, cheaper DRAM which needs refreshing.",
+                rom_card_title: "ROM (Read-Only Memory)",
+                rom_card_desc: "Non-volatile memory holding startup instructions (BIOS). Types: PROM, EPROM, EEPROM.",
+                cmos_card_title: "CMOS",
+                cmos_card_desc: "Stores system configuration settings like date, time, and hardware info, powered by a small battery.",
+                secondary_title: "Secondary Memory (Storage)",
+                secondary_subtitle: "Non-volatile memory for long-term data storage. It's slower but has a much larger capacity.",
+                magnetic_title: "Magnetic Storage",
+                magnetic_desc: "Uses magnetism to store data. Includes Hard Disk Drives (HDD), Magnetic Tape, and older Floppy Disks.",
+                optical_title: "Optical Storage",
+                optical_desc: "Uses lasers to read/write data. Includes CDs (~700MB), DVDs (~4.7GB+), and Blu-ray Discs (25GB+).",
+                flash_title: "Flash / Electronic Storage",
+                flash_desc: "Uses electronic circuits with no moving parts. Includes fast SSDs, portable Pen Drives, and SD Cards.",
+                datarep_title: "Data Representation",
+                datarep_subtitle: "How computers translate complex information into the simple language of binary numbers.",
+                units_title: "Memory Units",
+                unit_bit: "<b>Bit:</b> Smallest unit (0 or 1)",
+                unit_nibble: "<b>Nibble:</b> 4 bits",
+                unit_byte: "<b>Byte:</b> 8 bits",
+                unit_kb: "<b>Kilobyte (KB):</b> 1024 Bytes",
+                unit_mb: "<b>Megabyte (MB):</b> 1024 KB",
+                unit_gb: "<b>Gigabyte (GB):</b> 1024 MB",
+                systems_title: "Number Systems & Codes",
+                sys_binary: "<b>Binary (Base 2):</b> Uses 0 and 1.",
+                sys_octal: "<b>Octal (Base 8):</b> Uses 0-7.",
+                sys_hex: "<b>Hexadecimal (Base 16):</b> Uses 0-9 and A-F.",
+                code_ascii: "<b>ASCII:</b> 8-bit code for characters.",
+                code_unicode: "<b>Unicode:</b> 16/32-bit code for all world languages.",
+                footer_text: "© 2024 Computer Course for Students. Happy Learning!"
+            },
+            hi: {
+                nav_chapter6: "अध्याय 6",
+                nav_hierarchy: "पदानुक्रम",
+                nav_primary: "प्राथमिक मेमोरी",
+                nav_secondary: "द्वितीयक मेमोरी",
+                nav_datarep: "डेटा प्रतिनिधित्व",
+                hero_title: "मेमोरी और डेटा प्रतिनिधित्व",
+                hero_subtitle: "कंप्यूटर कैसे जानकारी संग्रहीत, एक्सेस और समझते हैं, सबसे छोटे बिट से लेकर जटिल कोड तक।",
+                hierarchy_title: "मेमोरी पदानुक्रम",
+                hierarchy_subtitle: "यह एनीमेशन दिखाता है कि सीपीयू मेमोरी के विभिन्न स्तरों के साथ कैसे इंटरैक्ट करता है। मेमोरी जितनी करीब होगी, एक्सेस उतना ही तेज होगा।",
+                cpu: "सीपीयू",
+                cache: "कैश",
+                ram: "रैम",
+                storage: "द्वितीयक स्टोरेज",
+                cache_desc: "सबसे तेज",
+                ram_desc: "तेज",
+                storage_desc: "सबसे धीमा",
+                anim_exp1: "सीपीयू को डेटा चाहिए। पहले, यह अल्ट्रा-फास्ट कैश की जांच करता है।",
+                anim_exp2: "कैश हिट! डेटा मिल गया और सीधे सीपीयू को भेज दिया गया।",
+                anim_exp3: "कैश मिस! डेटा कैश में नहीं है। अनुरोध रैम में जाता है।",
+                anim_exp4: "डेटा रैम में मिलता है और कैश और सीपीयू को भेजा जाता है।",
+                anim_exp5: "रैम मिस! डेटा धीमी द्वितीयक स्टोरेज से प्राप्त किया जाता है।",
+                primary_title: "प्राथमिक मेमोरी (मुख्य मेमोरी)",
+                primary_subtitle: "अस्थिर मेमोरी जो उस डेटा को रखती है जिसका सीपीयू सक्रिय रूप से उपयोग कर रहा है। बिजली बंद होने पर इसकी सामग्री खो जाती है।",
+                cache_card_title: "कैश मेमोरी",
+                cache_card_desc: "सीपीयू और रैम के बीच एक अत्यंत तेज़ बफर। SRAM तकनीक का उपयोग करता है और इसके कई स्तर (L1, L2, L3) होते हैं।",
+                ram_card_title: "रैम (रैंडम एक्सेस मेमोरी)",
+                ram_card_desc: "मुख्य 'वर्किंग' मेमोरी। प्रकारों में तेज SRAM और सामान्य, सस्ता DRAM शामिल है जिसे रीफ्रेश करने की आवश्यकता होती है।",
+                rom_card_title: "रोम (रीड-ओनली मेमोरी)",
+                rom_card_desc: "गैर-अस्थिर मेमोरी जिसमें स्टार्टअप निर्देश (BIOS) होते हैं। प्रकार: PROM, EPROM, EEPROM।",
+                cmos_card_title: "CMOS",
+                cmos_card_desc: "सिस्टम कॉन्फ़िगरेशन सेटिंग्स जैसे दिनांक, समय और हार्डवेयर जानकारी संग्रहीत करता है, जो एक छोटी बैटरी द्वारा संचालित होता है।",
+                secondary_title: "द्वितीयक मेमोरी (स्टोरेज)",
+                secondary_subtitle: "डेटा के दीर्घकालिक भंडारण के लिए गैर-अस्थिर मेमोरी। यह धीमी है लेकिन इसकी क्षमता बहुत बड़ी है।",
+                magnetic_title: "चुंबकीय भंडारण",
+                magnetic_desc: "डेटा संग्रहीत करने के लिए चुंबकत्व का उपयोग करता है। इसमें हार्ड डिस्क ड्राइव (HDD), चुंबकीय टेप और पुरानी फ्लॉपी डिस्क शामिल हैं।",
+                optical_title: "ऑप्टिकल भंडारण",
+                optical_desc: "डेटा को पढ़ने/लिखने के लिए लेजर का उपयोग करता है। इसमें सीडी (~700MB), डीवीडी (~4.7GB+), और ब्लू-रे डिस्क (25GB+) शामिल हैं।",
+                flash_title: "फ्लैश / इलेक्ट्रॉनिक भंडारण",
+                flash_desc: "बिना किसी चलते हुए हिस्से के इलेक्ट्रॉनिक सर्किट का उपयोग करता है। इसमें तेज SSD, पोर्टेबल पेन ड्राइव और एसडी कार्ड शामिल हैं।",
+                datarep_title: "डेटा प्रतिनिधित्व",
+                datarep_subtitle: "कंप्यूटर कैसे जटिल जानकारी को बाइनरी नंबरों की सरल भाषा में अनुवाद करते हैं।",
+                units_title: "मेमोरी इकाइयाँ",
+                unit_bit: "<b>बिट:</b> सबसे छोटी इकाई (0 या 1)",
+                unit_nibble: "<b>निबल:</b> 4 बिट्स",
+                unit_byte: "<b>बाइट:</b> 8 बिट्स",
+                unit_kb: "<b>किलोबाइट (KB):</b> 1024 बाइट्स",
+                unit_mb: "<b>मेगाबाइट (MB):</b> 1024 KB",
+                unit_gb: "<b>गीगाबाइट (GB):</b> 1024 MB",
+                systems_title: "संख्या प्रणाली और कोड",
+                sys_binary: "<b>बाइनरी (आधार 2):</b> 0 और 1 का उपयोग करता है।",
+                sys_octal: "<b>ऑक्टल (आधार 8):</b> 0-7 का उपयोग करता है।",
+                sys_hex: "<b>हेक्साडेसिमल (आधार 16):</b> 0-9 और A-F का उपयोग करता है।",
+                code_ascii: "<b>ASCII:</b> वर्णों के लिए 8-बिट कोड।",
+                code_unicode: "<b>यूनिकोड:</b> दुनिया की सभी भाषाओं के लिए 16/32-बिट कोड।",
+                footer_text: "© 2024 छात्रों के लिए कंप्यूटर कोर्स। सीखने की शुभकामनाएँ!"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'en';
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            langToggle.innerHTML = lang === 'en' ? 'हिन्दी' : 'English';
+            currentLang = lang;
+        };
+
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        });
+
+        // Memory Hierarchy Animation Logic
+        const packet = document.getElementById('data-packet');
+        const explanation = document.getElementById('anim-explanation');
+        const cpuEl = document.getElementById('cpu');
+        const cacheEl = document.getElementById('cache');
+        const ramEl = document.getElementById('ram');
+        const storageEl = document.getElementById('storage');
+
+        function getElementTop(el) {
+            return el.offsetTop + el.offsetHeight / 2 - packet.offsetHeight / 2;
+        }
+
+        async function runAnimation() {
+            while (true) {
+                // Scenario 1: Cache Hit
+                explanation.textContent = translations[currentLang].anim_exp1;
+                packet.style.top = getElementTop(cpuEl) + 'px';
+                await new Promise(r => setTimeout(r, 1500));
+                packet.style.top = getElementTop(cacheEl) + 'px';
+                await new Promise(r => setTimeout(r, 1000));
+                explanation.textContent = translations[currentLang].anim_exp2;
+                packet.style.top = getElementTop(cpuEl) + 'px';
+                await new Promise(r => setTimeout(r, 2000));
+
+                // Scenario 2: Cache Miss, RAM Hit
+                explanation.textContent = translations[currentLang].anim_exp3;
+                packet.style.top = getElementTop(cacheEl) + 'px';
+                await new Promise(r => setTimeout(r, 1500));
+                packet.style.top = getElementTop(ramEl) + 'px';
+                await new Promise(r => setTimeout(r, 1000));
+                explanation.textContent = translations[currentLang].anim_exp4;
+                packet.style.top = getElementTop(cacheEl) + 'px';
+                await new Promise(r => setTimeout(r, 1000));
+                packet.style.top = getElementTop(cpuEl) + 'px';
+                await new Promise(r => setTimeout(r, 2000));
+                
+                // Scenario 3: RAM Miss
+                explanation.textContent = translations[currentLang].anim_exp3;
+                 packet.style.top = getElementTop(cacheEl) + 'px';
+                await new Promise(r => setTimeout(r, 1500));
+                packet.style.top = getElementTop(ramEl) + 'px';
+                await new Promise(r => setTimeout(r, 1500));
+                 explanation.textContent = translations[currentLang].anim_exp5;
+                packet.style.top = getElementTop(storageEl) + 'px';
+                await new Promise(r => setTimeout(r, 1000));
+                 explanation.textContent = translations[currentLang].anim_exp4;
+                packet.style.top = getElementTop(ramEl) + 'px';
+                 await new Promise(r => setTimeout(r, 1000));
+                packet.style.top = getElementTop(cacheEl) + 'px';
+                 await new Promise(r => setTimeout(r, 1000));
+                packet.style.top = getElementTop(cpuEl) + 'px';
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+        
+        // Set initial language and start animation
+        setLanguage('en');
+        runAnimation();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
